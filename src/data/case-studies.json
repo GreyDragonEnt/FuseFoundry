@@ -1,0 +1,128 @@
+[
+  {
+    "id": "techstart-ai-revolution",
+    "title": "TechStart AI Revolution",
+    "company": "TechStart Inc.",
+    "industry": "SaaS Technology",
+    "challenge": "50% customer churn rate and stagnating growth despite innovative product. Manual customer support processes were overwhelming the team, and content marketing efforts lacked cohesion and measurable impact.",
+    "solution": "Implemented AI-driven customer retention system with predictive churn analysis, creator-led content strategy featuring industry thought leaders, and automated growth workflows that nurture leads through personalized touchpoints.",
+    "results": [
+      {
+        "metric": "Revenue Growth",
+        "value": "300%",
+        "description": "in 6 months"
+      },
+      {
+        "metric": "Churn Reduction",
+        "value": "75%",
+        "description": "through predictive AI"
+      },
+      {
+        "metric": "Support Efficiency",
+        "value": "10x",
+        "description": "faster response times"
+      },
+      {
+        "metric": "ROI",
+        "value": "450%",
+        "description": "return on investment"
+      }
+    ],
+    "duration": "6 months",
+    "tags": ["AI Strategy", "Customer Retention", "SaaS Growth", "Automation", "Creator Marketing"],
+    "featured": true,
+    "testimonial": {
+      "quote": "FuseFoundry didn't just solve our problems—they transformed our entire business model. Their AI-powered approach helped us understand our customers like never before.",
+      "author": "Sarah Chen",
+      "position": "CEO",
+      "company": "TechStart Inc.",
+      "industry": "SaaS Technology",
+      "rating": 5,
+      "result": "300% revenue growth"
+    }
+  },
+  {
+    "id": "ecowave-sustainable-scale",
+    "title": "EcoWave Sustainable Scale",
+    "company": "EcoWave Solutions",
+    "industry": "Clean Energy",
+    "challenge": "Limited brand awareness and difficulty reaching eco-conscious consumers at scale. Traditional marketing channels were expensive and ineffective for their target demographic of environmentally conscious millennials and Gen Z.",
+    "solution": "Deployed creator network specializing in sustainability content, AI-optimized content distribution across multiple platforms, and strategic influencer partnerships that aligned with brand values and environmental mission.",
+    "results": [
+      {
+        "metric": "Revenue Growth",
+        "value": "220%",
+        "description": "in 8 months"
+      },
+      {
+        "metric": "Brand Awareness",
+        "value": "400%",
+        "description": "increase in recognition"
+      },
+      {
+        "metric": "Social Engagement",
+        "value": "650%",
+        "description": "across all platforms"
+      },
+      {
+        "metric": "ROI",
+        "value": "280%",
+        "description": "marketing ROI"
+      }
+    ],
+    "duration": "8 months",
+    "tags": ["Creator Engine", "Brand Awareness", "Sustainability", "Social Media", "Influencer Marketing"],
+    "featured": false,
+    "testimonial": {
+      "quote": "The creator network FuseFoundry connected us with was game-changing. We went from being unknown to becoming a recognized leader in sustainable energy.",
+      "author": "Marcus Rodriguez",
+      "position": "Founder & CEO",
+      "company": "EcoWave Solutions",
+      "industry": "Clean Energy",
+      "rating": 5,
+      "result": "400% brand awareness increase"
+    }
+  },
+  {
+    "id": "finflow-automation-success",
+    "title": "FinFlow Automation Success",
+    "company": "FinFlow Banking",
+    "industry": "Financial Services",
+    "challenge": "Manual processes causing delays, high operational costs, and poor customer experience. Compliance requirements were creating bottlenecks, and customer onboarding took weeks instead of minutes.",
+    "solution": "Automated core banking workflows with AI-powered document processing, implemented intelligent customer service chatbots with human escalation, and streamlined KYC/AML onboarding processes while maintaining regulatory compliance.",
+    "results": [
+      {
+        "metric": "Cost Reduction",
+        "value": "60%",
+        "description": "operational savings"
+      },
+      {
+        "metric": "Processing Speed",
+        "value": "10x",
+        "description": "faster workflows"
+      },
+      {
+        "metric": "Customer Satisfaction",
+        "value": "95%",
+        "description": "satisfaction rate"
+      },
+      {
+        "metric": "ROI",
+        "value": "380%",
+        "description": "first-year ROI"
+      }
+    ],
+    "duration": "4 months",
+    "tags": ["Growth Systems", "Automation", "Financial Services", "Compliance", "Customer Experience"],
+    "featured": false,
+    "testimonial": {
+      "quote": "FuseFoundry's automation systems transformed our operations. What used to take weeks now happens in minutes, and our customers love the improved experience.",
+      "author": "Jennifer Liu",
+      "position": "CTO",
+      "company": "FinFlow Banking",
+      "industry": "Financial Services",
+      "rating": 5,
+      "result": "60% cost reduction"
+    }
+  }
+]

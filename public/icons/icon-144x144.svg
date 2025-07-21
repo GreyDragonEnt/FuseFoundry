@@ -1,0 +1,37 @@
+<svg width="144" height="144" viewBox="0 0 144 144" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#FF6A2C"/>
+      <stop offset="30%" style="stop-color:#FFB347"/>
+      <stop offset="60%" style="stop-color:#FFD700"/>
+      <stop offset="100%" style="stop-color:#18E0DF"/>
+    </linearGradient>
+    <linearGradient id="gradient2" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#FF6A2C"/>
+      <stop offset="50%" style="stop-color:#FFD700"/>
+      <stop offset="100%" style="stop-color:#18E0DF"/>
+    </linearGradient>
+    <linearGradient id="gradient3" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#CD853F"/>
+      <stop offset="50%" style="stop-color:#DEB887"/>
+      <stop offset="100%" style="stop-color:#18E0DF"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="144" height="144" rx="18" fill="#1a1a1a"/>
+  
+  <!-- Top gradient bar -->
+  <rect x="18" y="36" width="108" height="18" rx="9" fill="url(#gradient1)"/>
+  
+  <!-- Middle gradient bar -->
+  <rect x="18" y="63" width="81" height="15" rx="7.5" fill="url(#gradient2)"/>
+  
+  <!-- Bottom gradient bar -->
+  <rect x="18" y="87" width="65" height="12" rx="6" fill="url(#gradient3)"/>
+  
+  <!-- Accent dots -->}
+  <circle cx="117" cy="70" r="9" fill="#18E0DF"/>
+  <circle cx="96" cy="93" r="6" fill="#FFD700"/>
+  <circle cx="115" cy="93" r="6" fill="#FF6A2C"/>
+</svg>

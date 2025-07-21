@@ -1,0 +1,39 @@
+<svg width="240" height="60" viewBox="0 0 240 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Main gradient for the top bar -->
+    <linearGradient id="mainGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#FF6A2C"/>
+      <stop offset="30%" style="stop-color:#FFB347"/>
+      <stop offset="60%" style="stop-color:#FFD700"/>
+      <stop offset="100%" style="stop-color:#18E0DF"/>
+    </linearGradient>
+    
+    <!-- Secondary gradient for middle bar -->
+    <linearGradient id="secondaryGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#FF6A2C"/>
+      <stop offset="50%" style="stop-color:#FFD700"/>
+      <stop offset="100%" style="stop-color:#18E0DF"/>
+    </linearGradient>
+    
+    <!-- Tertiary gradient for bottom bar -->
+    <linearGradient id="tertiaryGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#CD853F"/>
+      <stop offset="50%" style="stop-color:#DEB887"/>
+      <stop offset="100%" style="stop-color:#18E0DF"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Top gradient bar -->
+  <rect x="0" y="8" width="240" height="12" rx="6" fill="url(#mainGradient)"/>
+  
+  <!-- Middle gradient bar -->
+  <rect x="0" y="26" width="180" height="10" rx="5" fill="url(#secondaryGradient)"/>
+  
+  <!-- Bottom gradient bar -->
+  <rect x="0" y="40" width="144" height="8" rx="4" fill="url(#tertiaryGradient)"/>
+  
+  <!-- Accent dots -->
+  <circle cx="236" cy="26" r="6" fill="#18E0DF"/>
+  <circle cx="200" cy="44" r="4" fill="#FFD700"/>
+  <circle cx="256" cy="44" r="4" fill="#FF6A2C"/>
+</svg>

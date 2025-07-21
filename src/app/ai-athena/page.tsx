@@ -1,0 +1,275 @@
+import { Bot, Brain, TrendingUp, Shield, Clock, ArrowRight, CheckCircle, Star } from 'lucide-react'
+import Link from 'next/link'
+
+const features = [
+  {
+    icon: Brain,
+    title: 'Advanced Analytics',
+    description: 'Deep insights into your business metrics, customer behavior, and market opportunities.'
+  },
+  {
+    icon: TrendingUp,
+    title: 'Predictive Modeling',
+    description: 'Forecast trends, identify risks, and uncover growth opportunities before your competitors.'
+  },
+  {
+    icon: Shield,
+    title: 'Secure & Private',
+    description: 'Enterprise-grade security with your data never leaving your control.'
+  },
+  {
+    icon: Clock,
+    title: '24/7 Availability',
+    description: 'Get instant answers and insights whenever you need them, around the clock.'
+  }
+]
+
+const capabilities = [
+  'Market trend analysis and forecasting',
+  'Customer behavior prediction',
+  'Revenue optimization strategies',
+  'Competitive intelligence gathering',
+  'Risk assessment and mitigation',
+  'Process automation recommendations',
+  'Content strategy optimization',
+  'Sales funnel analysis',
+  'ROI calculation and projection',
+  'Real-time performance monitoring'
+]
+
+const testimonials = [
+  {
+    quote: "Athena helped us identify a market opportunity worth $2M that we completely missed. The ROI was immediate.",
+    author: "Sarah Chen",
+    role: "CEO, TechStart Inc.",
+    rating: 5
+  },
+  {
+    quote: "The predictive analytics saved us from a costly mistake and redirected our strategy toward 300% growth.",
+    author: "Marcus Rodriguez", 
+    role: "Founder, EcoWave Solutions",
+    rating: 5
+  },
+  {
+    quote: "Having 24/7 access to AI-powered insights transformed how we make decisions. It&apos;s like having a genius consultant on speed dial.",
+    author: "Jennifer Liu",
+    role: "CTO, FinFlow Banking",
+    rating: 5
+  }
+]
+
+export default function AIAthenaPage() {
+  return (
+    <div className="min-h-screen">
+      {/* Hero Section */}
+      <section className="relative py-24 sm:py-32">
+        <div className="absolute inset-0 bg-gradient-to-br from-molten/5 via-spark/5 to-catalyst/5" />
+        <div className="container relative">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            {/* Content */}
+            <div>
+              <div className="inline-flex items-center px-4 py-2 rounded-full bg-molten/10 text-molten text-sm font-medium mb-6">
+                <Bot className="h-4 w-4 mr-2" />
+                AI-Powered Business Intelligence
+              </div>
+              
+              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black text-forge dark:text-white mb-6">
+                Meet 
+                <span className="block bg-gradient-to-r from-molten via-spark to-catalyst bg-clip-text text-transparent">
+                  Athena
+                </span>
+                <span className="block text-4xl sm:text-5xl lg:text-6xl">Your AI Business Strategist</span>
+              </h1>
+              
+              <p className="text-xl sm:text-2xl text-gray-600 dark:text-gray-300 mb-8 max-w-3xl">
+                Athena is our proprietary AI assistant that analyzes your business data, 
+                predicts market trends, and provides actionable insights to accelerate your growth.
+              </p>
+
+              <div className="flex flex-col sm:flex-row gap-4 mb-8">
+                <Link href="/contact" className="btn-primary inline-flex items-center group">
+                  Start Free Trial
+                  <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                </Link>
+                <button className="btn-secondary">
+                  Schedule Demo
+                </button>
+              </div>
+
+              {/* Quick stats */}
+              <div className="grid grid-cols-3 gap-4 text-center">
+                <div>
+                  <div className="text-2xl font-bold text-gradient">99.7%</div>
+                  <div className="text-sm text-gray-600 dark:text-gray-300">Accuracy</div>
+                </div>
+                <div>
+                  <div className="text-2xl font-bold text-gradient">10x</div>
+                  <div className="text-sm text-gray-600 dark:text-gray-300">Faster Insights</div>
+                </div>
+                <div>
+                  <div className="text-2xl font-bold text-gradient">24/7</div>
+                  <div className="text-sm text-gray-600 dark:text-gray-300">Available</div>
+                </div>
+              </div>
+            </div>
+
+            {/* Visual */}
+            <div className="relative">
+              <div className="card p-8 text-center">
+                <Bot className="h-32 w-32 mx-auto mb-6 text-catalyst" />
+                <div className="space-y-4">
+                  <div className="flex items-center justify-between text-sm">
+                    <span className="text-gray-600 dark:text-gray-300">Market Analysis</span>
+                    <span className="font-semibold text-green-500">+24% Growth</span>
+                  </div>
+                  <div className="flex items-center justify-between text-sm">
+                    <span className="text-gray-600 dark:text-gray-300">Risk Assessment</span>
+                    <span className="font-semibold text-blue-500">Low Risk</span>
+                  </div>
+                  <div className="flex items-center justify-between text-sm">
+                    <span className="text-gray-600 dark:text-gray-300">Next Action</span>
+                    <span className="font-semibold text-molten">Expand Market</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Features Section */}
+      <section className="py-20">
+        <div className="container">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-5xl font-bold text-forge dark:text-white mb-6">
+              Athena&apos;s <span className="text-gradient">Capabilities</span>
+            </h2>
+            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+              Powered by advanced machine learning and trained on millions of business scenarios, 
+              Athena provides insights that drive real results.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+            {features.map((feature, index) => {
+              const Icon = feature.icon
+              return (
+                <div key={index} className="card p-8 hover:shadow-xl transition-all duration-300">
+                  <div className="flex items-start space-x-4">
+                    <div className="p-3 bg-brand-gradient rounded-xl">
+                      <Icon className="h-6 w-6 text-white" />
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-bold text-forge dark:text-white mb-2">
+                        {feature.title}
+                      </h3>
+                      <p className="text-gray-600 dark:text-gray-300">
+                        {feature.description}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              )
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Capabilities List */}
+      <section className="py-20">
+        <div className="container">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <h3 className="text-3xl font-bold text-forge dark:text-white mb-8">
+                What Athena Can Do For You
+              </h3>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {capabilities.map((capability, index) => (
+                  <div key={index} className="flex items-center space-x-3">
+                    <CheckCircle className="h-5 w-5 text-catalyst flex-shrink-0" />
+                    <span className="text-gray-600 dark:text-gray-300 text-sm">
+                      {capability}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="card p-8">
+              <h4 className="text-xl font-bold text-forge dark:text-white mb-4">
+                Try Athena Now
+              </h4>
+              <div className="space-y-4">
+                <div className="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                  <div className="text-sm text-gray-600 dark:text-gray-300 mb-2">You:</div>
+                  <div className="text-forge dark:text-white">&quot;What&apos;s the best way to increase our Q2 revenue?&quot;</div>
+                </div>
+                <div className="bg-brand-gradient p-4 rounded-lg text-white">
+                  <div className="text-sm opacity-90 mb-2">Athena:</div>
+                  <div>&quot;Based on your data, I recommend focusing on customer retention (18% revenue impact) and expanding your premium tier (12% impact). Here&apos;s a detailed plan...&quot;</div>
+                </div>
+              </div>
+              <button className="btn-primary w-full mt-6">
+                Start Conversation
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials */}
+      <section className="py-20 bg-forge text-white">
+        <div className="container">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-5xl font-bold mb-6">
+              What Our Clients Say About <span className="text-gradient">Athena</span>
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {testimonials.map((testimonial, index) => (
+              <div key={index} className="card bg-gray-800 border-gray-700 p-6">
+                <div className="flex mb-4">
+                  {[...Array(testimonial.rating)].map((_, i) => (
+                    <Star key={i} className="h-5 w-5 text-spark fill-current" />
+                  ))}
+                </div>
+                <blockquote className="text-gray-300 mb-4 italic">
+                  &quot;{testimonial.quote}&quot;
+                </blockquote>
+                <div>
+                  <div className="font-semibold text-white">{testimonial.author}</div>
+                  <div className="text-gray-400 text-sm">{testimonial.role}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-20">
+        <div className="container text-center">
+          <h2 className="text-3xl md:text-5xl font-bold text-forge dark:text-white mb-6">
+            Ready to Meet Your AI Business Strategist?
+          </h2>
+          <p className="text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto">
+            Join hundreds of businesses already using Athena to make smarter decisions 
+            and achieve unprecedented growth.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link href="/contact" className="btn-primary">
+              Start Free 14-Day Trial
+            </Link>
+            <button className="btn-secondary">
+              Book Strategy Session
+            </button>
+          </div>
+          <p className="text-sm text-gray-500 dark:text-gray-400 mt-4">
+            No credit card required • Full access • Cancel anytime
+          </p>
+        </div>
+      </section>
+    </div>
+  )
+}

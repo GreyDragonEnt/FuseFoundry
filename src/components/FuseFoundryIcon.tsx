@@ -1,0 +1,45 @@
+'use client'
+
+interface FuseFoundryIconProps {
+  width?: number
+  height?: number
+  className?: string
+}
+
+export default function FuseFoundryIcon({ 
+  width = 128, 
+  height = 128, 
+  className = "" 
+}: FuseFoundryIconProps) {
+  return (
+    <svg 
+      width={width} 
+      height={height} 
+      viewBox="0 0 128 128" 
+      fill="none" 
+      xmlns="http://www.w3.org/2000/svg"
+      className={className}
+      aria-label="FuseFoundry Icon"
+    >
+      <defs>
+        <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" style={{stopColor:"#FF6A2C"}}/>
+          <stop offset="50%" style={{stopColor:"#FFC84A"}}/>
+          <stop offset="100%" style={{stopColor:"#18E0DF"}}/>
+        </linearGradient>
+      </defs>
+      <g>
+        {/* Stylised "F" forge bar top */}
+        <rect x="16" y="16" width="96" height="24" rx="6" fill="url(#grad1)" />
+        {/* Stylised "F" forge bar middle */}
+        <rect x="16" y="52" width="72" height="24" rx="6" fill="url(#grad1)" />
+        {/* Stylised "F" forge bar bottom (semi‑transparent to imply motion/heat) */}
+        <rect x="16" y="88" width="60" height="24" rx="6" fill="url(#grad1)" opacity="0.6" />
+        {/* Spark nodes */}
+        <circle cx="110" cy="70" r="6" fill="#18E0DF"/>
+        <circle cx="92" cy="102" r="4" fill="#FFC84A"/>
+        <circle cx="114" cy="102" r="4" fill="#FF6A2C"/>
+      </g>
+    </svg>
+  )
+}
