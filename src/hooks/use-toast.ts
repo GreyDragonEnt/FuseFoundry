@@ -1,6 +1,4 @@
-"use client"
-
-// Inspired by react-hot-toast library
+// Toast hook implementation
 import * as React from "react"
 
 import type {

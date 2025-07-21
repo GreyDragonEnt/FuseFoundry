@@ -4,15 +4,19 @@ const nextConfig: NextConfig = {
   // Enable React strict mode for better development experience
   reactStrictMode: true,
   
-  // Image optimization configuration
+  // GitHub Pages configuration
+  output: 'export',
+  trailingSlash: true,
+  basePath: '/FuseFoundry',
+  assetPrefix: '/FuseFoundry/',
+  
+  // Image optimization configuration (disabled for static export)
   images: {
+    unoptimized: true,
     formats: ['image/avif', 'image/webp'],
     deviceSizes: [320, 640, 768, 1024, 1440],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
   },
-  
-  // Build output configuration
-  output: 'standalone',
   
   // Security headers and PWA manifest headers
   async headers() {
