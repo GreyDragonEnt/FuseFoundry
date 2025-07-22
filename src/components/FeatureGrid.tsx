@@ -1,5 +1,6 @@
 'use client'
 
+import Link from 'next/link'
 import { Bot, Users, TrendingUp, Zap } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
@@ -8,19 +9,22 @@ const features = [
     icon: Bot,
     title: 'AI-Powered Strategy',
     description: 'Leverage our proprietary AI assistant "Athena" to analyze market trends, optimize operations, and predict growth opportunities.',
-    color: 'text-molten'
+    color: 'text-molten',
+    href: '/ai-athena'
   },
   {
     icon: Users,
     title: 'Creator Engine',
     description: 'Tap into our network of top-tier content creators and influencers to amplify your brand and reach new audiences.',
-    color: 'text-spark'
+    color: 'text-spark',
+    href: '/services'
   },
   {
     icon: TrendingUp,
     title: 'Growth Systems',
     description: 'Implement proven frameworks and automation systems that scale your revenue while reducing operational complexity.',
-    color: 'text-catalyst'
+    color: 'text-catalyst',
+    href: '/foundry-method'
   }
 ]
 
@@ -80,13 +84,16 @@ export default function FeatureGrid() {
                 </p>
 
                 {/* Learn more link */}
-                <button className={cn(
-                  'text-sm font-semibold hover:underline transition-colors',
-                  feature.color,
-                  'group-hover:text-white'
-                )}>
+                <Link 
+                  href={feature.href}
+                  className={cn(
+                    'text-sm font-semibold hover:underline transition-colors',
+                    feature.color,
+                    'group-hover:text-white'
+                  )}
+                >
                   Learn More →
-                </button>
+                </Link>
               </div>
             )
           })}
@@ -97,9 +104,9 @@ export default function FeatureGrid() {
           <p className="text-muted-foreground mb-6">
             Ready to see these pillars in action?
           </p>
-          <button className="btn-primary">
+          <Link href="/foundry-method" className="btn-primary">
             Explore Our Method
-          </button>
+          </Link>
         </div>
       </div>
     </section>
