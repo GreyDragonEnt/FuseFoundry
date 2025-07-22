@@ -1,8 +1,32 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { gemini } from '@/lib/gemini';
 
 export async function POST(request: NextRequest) {
   try {
+    // For static export builds, return a service unavailable response
+    if (process.env.GITHUB_PAGES === 'true') {
+      return NextResponse.json(
+        { 
+          error: 'AI service temporarily unavailable',
+          message: 'Please contact us directly for assistance.'
+        },
+        { status: 503 }
+      );
+    }
+
+    // Check if API key is available
+    if (!process.env.GOOGLE_AI_API_KEY) {
+      return NextResponse.json(
+        { 
+          error: 'AI service temporarily unavailable',
+          message: 'Please contact us directly for assistance.'
+        },
+        { status: 503 }
+      );
+    }
+
+    // Dynamically import gemini only when API key is available
+    const { gemini } = await import('@/lib/gemini');
+    
     const { prompt, businessContext, mode = 'teaser' } = await request.json();
     
     if (!prompt) {
