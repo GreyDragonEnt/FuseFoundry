@@ -38,29 +38,29 @@ const socialLinks = [
 
 export default function Footer() {
   return (
-    <footer className="bg-forge text-white">
+    <footer className="bg-card border-t border-border">
       {/* Main footer content */}
       <div className="container-custom py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8">
           {/* Brand section */}
           <div className="lg:col-span-2">
             <FuseFoundryLogo width={300} height={64} className="mb-6" />
-            <p className="text-gray-300 mb-6 leading-relaxed">
+            <p className="text-muted-foreground mb-6 leading-relaxed">
               Fusing AI innovation, creator-powered content, and strategic growth systems 
               to transform ambitious businesses into market leaders.
             </p>
             
             {/* Contact info */}
             <div className="space-y-3 mb-6">
-              <div className="flex items-center text-gray-300">
+              <div className="flex items-center text-muted-foreground">
                 <Mail className="h-4 w-4 mr-3 text-catalyst" />
                 <span>hello@fusefoundry.com</span>
               </div>
-              <div className="flex items-center text-gray-300">
+              <div className="flex items-center text-muted-foreground">
                 <Phone className="h-4 w-4 mr-3 text-catalyst" />
                 <span>+1 (555) 123-4567</span>
               </div>
-              <div className="flex items-center text-gray-300">
+              <div className="flex items-center text-muted-foreground">
                 <MapPin className="h-4 w-4 mr-3 text-catalyst" />
                 <span>San Francisco, CA</span>
               </div>
@@ -74,10 +74,10 @@ export default function Footer() {
                   <Link
                     key={social.name}
                     href={social.href}
-                    className="p-2 bg-gray-800 hover:bg-brand-gradient rounded-lg transition-all duration-200 hover:scale-110"
+                    className="p-2 bg-secondary hover:bg-brand-gradient rounded-lg transition-all duration-200 hover:scale-110"
                     aria-label={social.name}
                   >
-                    <Icon className="h-5 w-5" />
+                    <Icon className="h-5 w-5 text-foreground" />
                   </Link>
                 )
               })}
@@ -92,7 +92,7 @@ export default function Footer() {
                 <li key={item.name}>
                   <Link
                     href={item.href}
-                    className="text-gray-300 hover:text-catalyst transition-colors duration-200"
+                    className="text-muted-foreground hover:text-catalyst transition-colors duration-200"
                   >
                     {item.name}
                   </Link>
@@ -109,7 +109,7 @@ export default function Footer() {
                 <li key={item.name}>
                   <Link
                     href={item.href}
-                    className="text-gray-300 hover:text-catalyst transition-colors duration-200"
+                    className="text-muted-foreground hover:text-catalyst transition-colors duration-200"
                   >
                     {item.name}
                   </Link>
@@ -126,7 +126,7 @@ export default function Footer() {
                 <li key={item.name}>
                   <Link
                     href={item.href}
-                    className="text-gray-300 hover:text-catalyst transition-colors duration-200"
+                    className="text-muted-foreground hover:text-catalyst transition-colors duration-200"
                   >
                     {item.name}
                   </Link>
@@ -143,7 +143,7 @@ export default function Footer() {
                 <li key={item.name}>
                   <Link
                     href={item.href}
-                    className="text-gray-300 hover:text-catalyst transition-colors duration-200"
+                    className="text-muted-foreground hover:text-catalyst transition-colors duration-200"
                   >
                     {item.name}
                   </Link>
@@ -155,18 +155,18 @@ export default function Footer() {
       </div>
 
       {/* Newsletter signup */}
-      <div className="border-t border-gray-700">
+      <div className="border-t border-border">
         <div className="container-custom py-8">
           <div className="flex flex-col md:flex-row items-center justify-between">
             <div className="mb-4 md:mb-0">
-              <h4 className="text-lg font-semibold mb-2">Stay in the loop</h4>
-              <p className="text-gray-300">Get the latest insights on AI and business transformation.</p>
+              <h4 className="text-lg font-semibold mb-2 text-foreground">Stay in the loop</h4>
+              <p className="text-muted-foreground">Get the latest insights on AI and business transformation.</p>
             </div>
             <div className="flex w-full md:w-auto">
               <input
                 type="email"
                 placeholder="Enter your email"
-                className="flex-1 md:w-64 px-4 py-3 bg-gray-800 border border-gray-600 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-catalyst text-white placeholder-gray-400"
+                className="flex-1 md:w-64 px-4 py-3 bg-input border border-border rounded-l-lg focus:outline-none focus:ring-2 focus:ring-catalyst text-foreground placeholder-muted-foreground"
               />
               <button className="px-6 py-3 bg-brand-gradient text-white font-semibold rounded-r-lg hover:shadow-lg transition-all duration-200">
                 Subscribe
@@ -177,9 +177,9 @@ export default function Footer() {
       </div>
 
       {/* Bottom bar */}
-      <div className="border-t border-gray-700">
+      <div className="border-t border-border">
         <div className="container-custom py-6">
-          <div className="flex flex-col md:flex-row items-center justify-between text-gray-400 dark:text-gray-500 text-sm">
+          <div className="flex flex-col md:flex-row items-center justify-between text-muted-foreground text-sm">
             <p>&copy; 2025 FuseFoundry. All rights reserved.</p>
             <p className="mt-2 md:mt-0">
               Built with ❤️ using Next.js, Tailwind CSS, and AI

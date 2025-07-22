@@ -4,11 +4,13 @@ const nextConfig: NextConfig = {
   // Enable React strict mode for better development experience
   reactStrictMode: true,
   
-  // GitHub Pages configuration
-  output: 'export',
-  trailingSlash: true,
-  basePath: '/FuseFoundry',
-  assetPrefix: '/FuseFoundry/',
+  // GitHub Pages configuration (only when building for GitHub Pages)
+  ...(process.env.GITHUB_PAGES === 'true' && {
+    output: 'export',
+    trailingSlash: true,
+    basePath: '/FuseFoundry',
+    assetPrefix: '/FuseFoundry/',
+  }),
   
   // Image optimization configuration (disabled for static export)
   images: {

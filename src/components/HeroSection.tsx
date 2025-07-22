@@ -5,7 +5,7 @@ import { ArrowRight, Zap, Sparkles } from 'lucide-react'
 
 export default function HeroSection() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-white-hot dark:bg-forge">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-background">
       {/* Animated gradient background */}
       <div className="absolute inset-0 bg-brand-gradient opacity-5 animate-gradient-x" />
       
@@ -23,24 +23,24 @@ export default function HeroSection() {
       <div className="container-custom relative z-10">
         <div className="text-center max-w-4xl mx-auto">
           {/* Badge */}
-          <div className="inline-flex items-center px-4 py-2 rounded-full bg-white/80 dark:bg-forge/80 border border-gray-200 dark:border-gray-700 mb-8">
+          <div className="inline-flex items-center px-4 py-2 rounded-full bg-card border border-border mb-8">
             <Zap className="h-4 w-4 text-molten mr-2" />
-            <span className="text-sm font-medium text-forge dark:text-white">
+            <span className="text-sm font-medium text-foreground">
               AI-Powered Business Transformation
             </span>
           </div>
 
           {/* Main heading */}
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
-            <span className="text-forge dark:text-white">Fuse</span>{' '}
+            <span className="text-foreground">Fuse</span>{' '}
             <span className="text-gradient">Innovation</span>
             <br />
-            <span className="text-forge dark:text-white">Forge</span>{' '}
+            <span className="text-foreground">Forge</span>{' '}
             <span className="text-gradient">Success</span>
           </h1>
 
           {/* Subtitle */}
-          <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl md:text-2xl text-muted-foreground mb-12 max-w-3xl mx-auto leading-relaxed">
             We fuse cutting-edge AI, creator-powered content, and strategic growth systems 
             to transform ambitious businesses into market leaders.
           </p>

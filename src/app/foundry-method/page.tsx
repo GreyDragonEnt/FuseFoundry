@@ -70,14 +70,14 @@ export default function FoundryMethodPage() {
               Proven Framework
             </div>
             
-            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black text-forge dark:text-white mb-6">
+            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black text-foreground mb-6">
               The Foundry
               <span className="block bg-gradient-to-r from-molten via-spark to-catalyst bg-clip-text text-transparent">
                 Method™
               </span>
             </h1>
             
-            <p className="text-xl sm:text-2xl text-gray-600 dark:text-gray-300 mb-8 max-w-3xl mx-auto">
+            <p className="text-xl sm:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto">
               Our proven framework that fuses AI innovation, creator-powered content, and strategic growth systems 
               to unlock exponential business growth.
             </p>
@@ -99,13 +99,13 @@ export default function FoundryMethodPage() {
       <section className="py-20">
         <div className="container">
           <div className="text-center mb-16">
-            <h2 className="text-4xl sm:text-5xl font-black text-forge dark:text-white mb-6">
+            <h2 className="text-4xl sm:text-5xl font-black text-foreground mb-6">
               Four Pillars of
               <span className="block bg-gradient-to-r from-molten to-spark bg-clip-text text-transparent">
                 Exponential Growth
               </span>
             </h2>
-            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               The Foundry Method isn&apos;t just another consulting framework—it&apos;s a battle-tested system 
               that combines the best of AI, creator economy, and growth strategy.
             </p>
@@ -125,11 +125,11 @@ export default function FoundryMethodPage() {
                     <Icon className="h-8 w-8 text-white" />
                   </div>
                   
-                  <h3 className="text-2xl font-bold text-forge dark:text-white mb-4">
+                  <h3 className="text-2xl font-bold text-foreground mb-4">
                     {principle.title}
                   </h3>
                   
-                  <p className="text-gray-600 dark:text-gray-300 text-lg">
+                  <p className="text-muted-foreground text-lg">
                     {principle.description}
                   </p>
                 </div>
@@ -143,13 +143,13 @@ export default function FoundryMethodPage() {
       <section className="py-20 bg-gray-50 dark:bg-gray-900">
         <div className="container">
           <div className="text-center mb-16">
-            <h2 className="text-4xl sm:text-5xl font-black text-forge dark:text-white mb-6">
+            <h2 className="text-4xl sm:text-5xl font-black text-foreground mb-6">
               Your Journey to
               <span className="block bg-gradient-to-r from-spark to-catalyst bg-clip-text text-transparent">
                 Exponential Growth
               </span>
             </h2>
-            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               From initial assessment to scaled success, here&apos;s exactly how we&apos;ll transform your business 
               using the Foundry Method.
             </p>
@@ -163,13 +163,13 @@ export default function FoundryMethodPage() {
       <section className="py-20">
         <div className="container">
           <div className="text-center mb-16">
-            <h2 className="text-4xl sm:text-5xl font-black text-forge dark:text-white mb-6">
+            <h2 className="text-4xl sm:text-5xl font-black text-foreground mb-6">
               Proven
               <span className="bg-gradient-to-r from-molten to-catalyst bg-clip-text text-transparent ml-3">
                 Results
               </span>
             </h2>
-            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               Numbers don&apos;t lie. Here&apos;s what happens when you implement the Foundry Method.
             </p>
           </div>
@@ -180,10 +180,10 @@ export default function FoundryMethodPage() {
                 <div className="text-5xl sm:text-6xl font-black bg-gradient-to-r from-molten via-spark to-catalyst bg-clip-text text-transparent mb-2">
                   {result.metric}
                 </div>
-                <div className="text-lg font-bold text-forge dark:text-white mb-1">
+                <div className="text-lg font-bold text-foreground mb-1">
                   {result.label}
                 </div>
-                <div className="text-sm text-gray-500 dark:text-gray-400">
+                <div className="text-sm text-muted-foreground">
                   {result.sublabel}
                 </div>
               </div>
@@ -196,13 +196,13 @@ export default function FoundryMethodPage() {
       <section className="py-20 bg-gray-50 dark:bg-gray-900">
         <div className="container">
           <div className="text-center mb-16">
-            <h2 className="text-4xl sm:text-5xl font-black text-forge dark:text-white mb-6">
+            <h2 className="text-4xl sm:text-5xl font-black text-foreground mb-6">
               Success
               <span className="bg-gradient-to-r from-spark to-catalyst bg-clip-text text-transparent ml-3">
                 Stories
               </span>
             </h2>
-            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               Real businesses, real transformations, real results.
             </p>
           </div>
@@ -216,17 +216,17 @@ export default function FoundryMethodPage() {
                   ))}
                 </div>
                 
-                <blockquote className="text-lg text-gray-600 dark:text-gray-300 mb-6 italic">
+                <blockquote className="text-lg text-muted-foreground mb-6 italic">
                   &ldquo;{testimonial.quote}&rdquo;
                 </blockquote>
                 
                 <div className="border-t pt-6">
                   <div className="flex items-center justify-between">
                     <div>
-                      <div className="font-bold text-forge dark:text-white">
+                      <div className="font-bold text-foreground">
                         {testimonial.author}
                       </div>
-                      <div className="text-gray-500 dark:text-gray-400">
+                      <div className="text-muted-foreground">
                         {testimonial.company}
                       </div>
                     </div>
@@ -247,14 +247,14 @@ export default function FoundryMethodPage() {
       <section className="py-20">
         <div className="container">
           <div className="card p-12 text-center bg-gradient-to-br from-molten/10 via-spark/10 to-catalyst/10 border-molten/20">
-            <h2 className="text-4xl sm:text-5xl font-black text-forge dark:text-white mb-6">
+            <h2 className="text-4xl sm:text-5xl font-black text-foreground mb-6">
               Ready to Transform
               <span className="block bg-gradient-to-r from-molten to-catalyst bg-clip-text text-transparent">
                 Your Business?
               </span>
             </h2>
             
-            <p className="text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto">
+            <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
               Don&apos;t wait for disruption to happen to you. Let&apos;s build your competitive advantage together 
               with the Foundry Method.
             </p>
@@ -269,7 +269,7 @@ export default function FoundryMethodPage() {
               </button>
             </div>
             
-            <div className="mt-8 flex items-center justify-center text-sm text-gray-500 dark:text-gray-400">
+            <div className="mt-8 flex items-center justify-center text-sm text-muted-foreground">
               <CheckCircle className="h-4 w-4 mr-2 text-catalyst" />
               Free consultation • No obligation • Immediate insights
             </div>

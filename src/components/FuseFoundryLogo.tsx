@@ -1,5 +1,7 @@
 'use client'
 
+import { useThemeSafe } from './ThemeProvider'
+
 interface FuseFoundryLogoProps {
   width?: number
   height?: number
@@ -11,6 +13,9 @@ export default function FuseFoundryLogo({
   height = 128, 
   className = "" 
 }: FuseFoundryLogoProps) {
+  const { isDark } = useThemeSafe()
+  const textColor = isDark ? '#FFFFFF' : '#202326'
+  
   return (
     <svg 
       width={width} 
@@ -45,7 +50,7 @@ export default function FuseFoundryLogo({
         y="90" 
         fontSize="64" 
         fontFamily="'Inter', 'Helvetica Neue', Arial, sans-serif" 
-        fill="#202326" 
+        fill={textColor} 
         fontWeight="700" 
         letterSpacing="-1"
         className="dark:fill-white"

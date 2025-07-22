@@ -80,14 +80,14 @@ export default function ServicesPage() {
               Our Services
             </div>
             
-            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black text-forge dark:text-white mb-6">
+            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black text-foreground mb-6">
               Transformative
               <span className="block bg-gradient-to-r from-molten via-spark to-catalyst bg-clip-text text-transparent">
                 Solutions
               </span>
             </h1>
             
-            <p className="text-xl sm:text-2xl text-gray-600 dark:text-gray-300 mb-8 max-w-3xl mx-auto">
+            <p className="text-xl sm:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto">
               We offer three core pillars of transformation that work together to 
               revolutionize your business operations and accelerate growth.
             </p>
@@ -116,25 +116,25 @@ export default function ServicesPage() {
                       <div className="p-3 bg-brand-gradient rounded-2xl mr-4">
                         <Icon className="h-8 w-8 text-white" />
                       </div>
-                      <h2 className="text-3xl md:text-4xl font-bold text-forge dark:text-white">
+                      <h2 className="text-3xl md:text-4xl font-bold text-foreground">
                         {service.title}
                       </h2>
                     </div>
 
-                    <p className="text-lg text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
+                    <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
                       {service.description}
                     </p>
 
                     {/* Features */}
                     <div className="mb-8">
-                      <h3 className="text-xl font-semibold text-forge dark:text-white mb-4">
+                      <h3 className="text-xl font-semibold text-foreground mb-4">
                         What&apos;s Included:
                       </h3>
                       <ul className="space-y-3">
                         {service.features.map((feature, idx) => (
                           <li key={idx} className="flex items-center">
                             <CheckCircle className="h-5 w-5 text-catalyst mr-3 flex-shrink-0" />
-                            <span className="text-gray-600 dark:text-gray-300">{feature}</span>
+                            <span className="text-muted-foreground">{feature}</span>
                           </li>
                         ))}
                       </ul>
@@ -142,13 +142,13 @@ export default function ServicesPage() {
 
                     {/* Benefits */}
                     <div className="mb-8">
-                      <h3 className="text-xl font-semibold text-forge dark:text-white mb-4">
+                      <h3 className="text-xl font-semibold text-foreground mb-4">
                         Expected Results:
                       </h3>
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         {service.benefits.map((benefit, idx) => (
                           <div key={idx} className="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
-                            <span className="text-sm font-medium text-gray-600 dark:text-gray-300">
+                            <span className="text-sm font-medium text-muted-foreground">
                               {benefit}
                             </span>
                           </div>
@@ -176,7 +176,7 @@ export default function ServicesPage() {
                       <div className="text-4xl font-bold text-gradient mb-2">
                         {index === 0 ? '60%' : index === 1 ? '400%' : '300%'}
                       </div>
-                      <div className="text-gray-600 dark:text-gray-300">
+                      <div className="text-muted-foreground">
                         {index === 0 ? 'Cost Reduction' : 
                          index === 1 ? 'Brand Awareness' : 'Revenue Growth'}
                       </div>

@@ -1,5 +1,7 @@
-import { Bot, Brain, TrendingUp, Shield, Clock, ArrowRight, CheckCircle, Star } from 'lucide-react'
+import { Bot, Brain, TrendingUp, Shield, Clock, ArrowRight, Star } from 'lucide-react'
 import Link from 'next/link'
+import AthenaInteractive from '@/components/AthenaInteractive'
+import AthenaCapabilitiesClient from '@/components/AthenaCapabilitiesClient'
 
 const features = [
   {
@@ -22,19 +24,6 @@ const features = [
     title: '24/7 Availability',
     description: 'Get instant answers and insights whenever you need them, around the clock.'
   }
-]
-
-const capabilities = [
-  'Market trend analysis and forecasting',
-  'Customer behavior prediction',
-  'Revenue optimization strategies',
-  'Competitive intelligence gathering',
-  'Risk assessment and mitigation',
-  'Process automation recommendations',
-  'Content strategy optimization',
-  'Sales funnel analysis',
-  'ROI calculation and projection',
-  'Real-time performance monitoring'
 ]
 
 const testimonials = [
@@ -73,7 +62,7 @@ export default function AIAthenaPage() {
                 AI-Powered Business Intelligence
               </div>
               
-              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black text-forge dark:text-white mb-6">
+              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black text-foreground mb-6">
                 Meet 
                 <span className="block bg-gradient-to-r from-molten via-spark to-catalyst bg-clip-text text-transparent">
                   Athena
@@ -81,7 +70,7 @@ export default function AIAthenaPage() {
                 <span className="block text-4xl sm:text-5xl lg:text-6xl">Your AI Business Strategist</span>
               </h1>
               
-              <p className="text-xl sm:text-2xl text-gray-600 dark:text-gray-300 mb-8 max-w-3xl">
+              <p className="text-xl sm:text-2xl text-muted-foreground mb-8 max-w-3xl">
                 Athena is our proprietary AI assistant that analyzes your business data, 
                 predicts market trends, and provides actionable insights to accelerate your growth.
               </p>
@@ -100,15 +89,15 @@ export default function AIAthenaPage() {
               <div className="grid grid-cols-3 gap-4 text-center">
                 <div>
                   <div className="text-2xl font-bold text-gradient">99.7%</div>
-                  <div className="text-sm text-gray-600 dark:text-gray-300">Accuracy</div>
+                  <div className="text-sm text-muted-foreground">Accuracy</div>
                 </div>
                 <div>
                   <div className="text-2xl font-bold text-gradient">10x</div>
-                  <div className="text-sm text-gray-600 dark:text-gray-300">Faster Insights</div>
+                  <div className="text-sm text-muted-foreground">Faster Insights</div>
                 </div>
                 <div>
                   <div className="text-2xl font-bold text-gradient">24/7</div>
-                  <div className="text-sm text-gray-600 dark:text-gray-300">Available</div>
+                  <div className="text-sm text-muted-foreground">Available</div>
                 </div>
               </div>
             </div>
@@ -119,15 +108,15 @@ export default function AIAthenaPage() {
                 <Bot className="h-32 w-32 mx-auto mb-6 text-catalyst" />
                 <div className="space-y-4">
                   <div className="flex items-center justify-between text-sm">
-                    <span className="text-gray-600 dark:text-gray-300">Market Analysis</span>
+                    <span className="text-muted-foreground">Market Analysis</span>
                     <span className="font-semibold text-green-500">+24% Growth</span>
                   </div>
                   <div className="flex items-center justify-between text-sm">
-                    <span className="text-gray-600 dark:text-gray-300">Risk Assessment</span>
+                    <span className="text-muted-foreground">Risk Assessment</span>
                     <span className="font-semibold text-blue-500">Low Risk</span>
                   </div>
                   <div className="flex items-center justify-between text-sm">
-                    <span className="text-gray-600 dark:text-gray-300">Next Action</span>
+                    <span className="text-muted-foreground">Next Action</span>
                     <span className="font-semibold text-molten">Expand Market</span>
                   </div>
                 </div>
@@ -141,10 +130,10 @@ export default function AIAthenaPage() {
       <section className="py-20">
         <div className="container">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl font-bold text-forge dark:text-white mb-6">
+            <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-6">
               Athena&apos;s <span className="text-gradient">Capabilities</span>
             </h2>
-            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               Powered by advanced machine learning and trained on millions of business scenarios, 
               Athena provides insights that drive real results.
             </p>
@@ -160,10 +149,10 @@ export default function AIAthenaPage() {
                       <Icon className="h-6 w-6 text-white" />
                     </div>
                     <div>
-                      <h3 className="text-xl font-bold text-forge dark:text-white mb-2">
+                      <h3 className="text-xl font-bold text-foreground mb-2">
                         {feature.title}
                       </h3>
-                      <p className="text-gray-600 dark:text-gray-300">
+                      <p className="text-muted-foreground">
                         {feature.description}
                       </p>
                     </div>
@@ -180,38 +169,14 @@ export default function AIAthenaPage() {
         <div className="container">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h3 className="text-3xl font-bold text-forge dark:text-white mb-8">
-                What Athena Can Do For You
-              </h3>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {capabilities.map((capability, index) => (
-                  <div key={index} className="flex items-center space-x-3">
-                    <CheckCircle className="h-5 w-5 text-catalyst flex-shrink-0" />
-                    <span className="text-gray-600 dark:text-gray-300 text-sm">
-                      {capability}
-                    </span>
-                  </div>
-                ))}
-              </div>
+              <AthenaCapabilitiesClient />
             </div>
 
-            <div className="card p-8">
-              <h4 className="text-xl font-bold text-forge dark:text-white mb-4">
-                Try Athena Now
+            <div>
+              <h4 className="text-xl font-bold text-foreground mb-6">
+                Try Athena Live - Ask Any Business Question
               </h4>
-              <div className="space-y-4">
-                <div className="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
-                  <div className="text-sm text-gray-600 dark:text-gray-300 mb-2">You:</div>
-                  <div className="text-forge dark:text-white">&quot;What&apos;s the best way to increase our Q2 revenue?&quot;</div>
-                </div>
-                <div className="bg-brand-gradient p-4 rounded-lg text-white">
-                  <div className="text-sm opacity-90 mb-2">Athena:</div>
-                  <div>&quot;Based on your data, I recommend focusing on customer retention (18% revenue impact) and expanding your premium tier (12% impact). Here&apos;s a detailed plan...&quot;</div>
-                </div>
-              </div>
-              <button className="btn-primary w-full mt-6">
-                Start Conversation
-              </button>
+              <AthenaInteractive businessContext="AI-powered business transformation and growth strategy" />
             </div>
           </div>
         </div>
@@ -250,10 +215,10 @@ export default function AIAthenaPage() {
       {/* CTA Section */}
       <section className="py-20">
         <div className="container text-center">
-          <h2 className="text-3xl md:text-5xl font-bold text-forge dark:text-white mb-6">
+          <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-6">
             Ready to Meet Your AI Business Strategist?
           </h2>
-          <p className="text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto">
+          <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
             Join hundreds of businesses already using Athena to make smarter decisions 
             and achieve unprecedented growth.
           </p>
@@ -265,7 +230,7 @@ export default function AIAthenaPage() {
               Book Strategy Session
             </button>
           </div>
-          <p className="text-sm text-gray-500 dark:text-gray-400 mt-4">
+          <p className="text-sm text-muted-foreground mt-4">
             No credit card required • Full access • Cancel anytime
           </p>
         </div>

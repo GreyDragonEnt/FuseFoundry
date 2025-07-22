@@ -51,14 +51,14 @@ export default function ContactPage() {
               Contact Us
             </div>
             
-            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black text-forge dark:text-white mb-6">
+            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black text-foreground mb-6">
               Get in
               <span className="block bg-gradient-to-r from-molten via-spark to-catalyst bg-clip-text text-transparent">
                 Touch
               </span>
             </h1>
             
-            <p className="text-xl sm:text-2xl text-gray-600 dark:text-gray-300 mb-8 max-w-3xl mx-auto">
+            <p className="text-xl sm:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto">
               Ready to transform your business? We&apos;d love to hear about your challenges 
               and discuss how FuseFoundry can help you achieve your goals.
             </p>
@@ -79,10 +79,10 @@ export default function ContactPage() {
                       <Icon className="h-6 w-6 text-white" />
                     </div>
                   </div>
-                  <h3 className="text-lg font-semibold text-forge dark:text-white mb-2">
+                  <h3 className="text-lg font-semibold text-foreground mb-2">
                     {method.title}
                   </h3>
-                  <p className="text-gray-600 dark:text-gray-300 text-sm mb-4">
+                  <p className="text-muted-foreground text-sm mb-4">
                     {method.description}
                   </p>
                   <button 
@@ -109,10 +109,10 @@ export default function ContactPage() {
             {/* Contact Form */}
             <div className="lg:col-span-2">
               <div className="mb-8">
-                <h2 className="text-3xl font-bold text-forge dark:text-white mb-4">
+                <h2 className="text-3xl font-bold text-foreground mb-4">
                   Send us a Message
                 </h2>
-                <p className="text-gray-600 dark:text-gray-300">
+                <p className="text-muted-foreground">
                   Fill out the form below and we&apos;ll get back to you within 24 hours.
                 </p>
               </div>
@@ -123,11 +123,11 @@ export default function ContactPage() {
             <div className="space-y-8">
               {/* Office Info */}
               <div className="card p-6">
-                <h3 className="text-xl font-semibold text-forge dark:text-white mb-4 flex items-center">
+                <h3 className="text-xl font-semibold text-foreground mb-4 flex items-center">
                   <MapPin className="h-5 w-5 mr-2 text-molten" />
                   Our Office
                 </h3>
-                <div className="space-y-2 text-gray-600 dark:text-gray-300">
+                <div className="space-y-2 text-muted-foreground">
                   <p>123 Innovation Drive</p>
                   <p>San Francisco, CA 94105</p>
                   <p>United States</p>
@@ -136,17 +136,17 @@ export default function ContactPage() {
 
               {/* Office Hours */}
               <div className="card p-6">
-                <h3 className="text-xl font-semibold text-forge dark:text-white mb-4 flex items-center">
+                <h3 className="text-xl font-semibold text-foreground mb-4 flex items-center">
                   <Clock className="h-5 w-5 mr-2 text-molten" />
                   Office Hours
                 </h3>
                 <div className="space-y-2">
                   {officeHours.map((schedule, index) => (
                     <div key={index} className="flex justify-between text-sm">
-                      <span className="text-gray-600 dark:text-gray-300">
+                      <span className="text-muted-foreground">
                         {schedule.day}
                       </span>
-                      <span className="font-medium text-forge dark:text-white">
+                      <span className="font-medium text-foreground">
                         {schedule.hours}
                       </span>
                     </div>
@@ -156,21 +156,21 @@ export default function ContactPage() {
 
               {/* Quick Stats */}
               <div className="card p-6">
-                <h3 className="text-xl font-semibold text-forge dark:text-white mb-4">
+                <h3 className="text-xl font-semibold text-foreground mb-4">
                   Why Choose Us?
                 </h3>
                 <div className="space-y-4">
                   <div className="text-center">
                     <div className="text-2xl font-bold text-gradient">24h</div>
-                    <div className="text-sm text-gray-600 dark:text-gray-300">Response Time</div>
+                    <div className="text-sm text-muted-foreground">Response Time</div>
                   </div>
                   <div className="text-center">
                     <div className="text-2xl font-bold text-gradient">500+</div>
-                    <div className="text-sm text-gray-600 dark:text-gray-300">Happy Clients</div>
+                    <div className="text-sm text-muted-foreground">Happy Clients</div>
                   </div>
                   <div className="text-center">
                     <div className="text-2xl font-bold text-gradient">98%</div>
-                    <div className="text-sm text-gray-600 dark:text-gray-300">Success Rate</div>
+                    <div className="text-sm text-muted-foreground">Success Rate</div>
                   </div>
                 </div>
               </div>
@@ -196,50 +196,50 @@ export default function ContactPage() {
       <section className="py-20">
         <div className="container">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-forge dark:text-white mb-4">
+            <h2 className="text-3xl font-bold text-foreground mb-4">
               Frequently Asked Questions
             </h2>
-            <p className="text-gray-600 dark:text-gray-300">
+            <p className="text-muted-foreground">
               Common questions about working with FuseFoundry
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             <div className="card p-6">
-              <h3 className="font-semibold text-forge dark:text-white mb-2">
+              <h3 className="font-semibold text-foreground mb-2">
                 How quickly can you start working on my project?
               </h3>
-              <p className="text-gray-600 dark:text-gray-300 text-sm">
+              <p className="text-muted-foreground text-sm">
                 We typically begin projects within 1-2 weeks of signing an agreement, 
                 depending on project complexity and our current capacity.
               </p>
             </div>
 
             <div className="card p-6">
-              <h3 className="font-semibold text-forge dark:text-white mb-2">
+              <h3 className="font-semibold text-foreground mb-2">
                 Do you work with businesses of all sizes?
               </h3>
-              <p className="text-gray-600 dark:text-gray-300 text-sm">
+              <p className="text-muted-foreground text-sm">
                 Yes! We work with startups, mid-market companies, and enterprises. 
                 Our solutions are tailored to fit your specific needs and budget.
               </p>
             </div>
 
             <div className="card p-6">
-              <h3 className="font-semibold text-forge dark:text-white mb-2">
+              <h3 className="font-semibold text-foreground mb-2">
                 What industries do you specialize in?
               </h3>
-              <p className="text-gray-600 dark:text-gray-300 text-sm">
+              <p className="text-muted-foreground text-sm">
                 We have experience across SaaS, e-commerce, fintech, healthcare, 
                 and many other industries. Our AI-driven approach adapts to any sector.
               </p>
             </div>
 
             <div className="card p-6">
-              <h3 className="font-semibold text-forge dark:text-white mb-2">
+              <h3 className="font-semibold text-foreground mb-2">
                 How do you measure success?
               </h3>
-              <p className="text-gray-600 dark:text-gray-300 text-sm">
+              <p className="text-muted-foreground text-sm">
                 We establish clear KPIs at project start and provide regular reporting 
                 on metrics like revenue growth, cost reduction, and efficiency gains.
               </p>

@@ -54,11 +54,11 @@ export default function NotFound() {
             404
           </h1>
           
-          <h2 className="text-3xl sm:text-4xl font-bold text-forge dark:text-white mb-6">
+          <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-6">
             Oops! Page Not Found
           </h2>
           
-          <p className="text-xl text-gray-600 dark:text-gray-300 mb-12 max-w-2xl mx-auto">
+          <p className="text-xl text-muted-foreground mb-12 max-w-2xl mx-auto">
             The page you&apos;re looking for seems to have vanished into the digital void. 
             But don&apos;t worry—we&apos;ll help you get back on track!
           </p>
@@ -75,11 +75,11 @@ export default function NotFound() {
                     </div>
                   </div>
                   
-                  <h3 className="text-lg font-bold text-forge dark:text-white mb-2">
+                  <h3 className="text-lg font-bold text-foreground mb-2">
                     {suggestion.title}
                   </h3>
                   
-                  <p className="text-gray-600 dark:text-gray-300 text-sm mb-4">
+                  <p className="text-muted-foreground text-sm mb-4">
                     {suggestion.description}
                   </p>
                   
@@ -93,7 +93,7 @@ export default function NotFound() {
 
           {/* Quick Links */}
           <div className="mb-12">
-            <h3 className="text-2xl font-bold text-forge dark:text-white mb-8">
+            <h3 className="text-2xl font-bold text-foreground mb-8">
               Popular Pages
             </h3>
             
@@ -104,10 +104,10 @@ export default function NotFound() {
                   href={link.href}
                   className="card p-4 hover:shadow-lg transition-all group text-left"
                 >
-                  <h4 className="font-bold text-forge dark:text-white mb-1 group-hover:text-molten transition-colors">
+                  <h4 className="font-bold text-foreground mb-1 group-hover:text-molten transition-colors">
                     {link.name}
                   </h4>
-                  <p className="text-gray-600 dark:text-gray-400 text-sm">
+                  <p className="text-muted-foreground text-sm">
                     {link.description}
                   </p>
                 </Link>
@@ -130,7 +130,7 @@ export default function NotFound() {
 
           {/* Help Text */}
           <div className="mt-12 p-6 bg-gray-50 dark:bg-gray-800 rounded-lg">
-            <p className="text-gray-600 dark:text-gray-400 text-sm">
+            <p className="text-muted-foreground text-sm">
               Still can&apos;t find what you&apos;re looking for? 
               <Link href="/contact" className="text-molten hover:text-spark ml-1 font-medium">
                 Contact our support team

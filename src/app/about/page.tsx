@@ -114,14 +114,14 @@ export default function AboutPage() {
               Our Story
             </div>
             
-            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black text-forge dark:text-white mb-6">
+            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black text-foreground mb-6">
               Fusing Innovation
               <span className="block bg-gradient-to-r from-molten via-spark to-catalyst bg-clip-text text-transparent">
                 with Impact
               </span>
             </h1>
             
-            <p className="text-xl sm:text-2xl text-gray-600 dark:text-gray-300 mb-8 max-w-3xl mx-auto">
+            <p className="text-xl sm:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto">
               We&apos;re on a mission to transform businesses by fusing AI innovation, creator-powered content, 
               and strategic growth systems into one unstoppable force.
             </p>
@@ -137,7 +137,7 @@ export default function AboutPage() {
                     <div className="text-3xl sm:text-4xl font-black bg-gradient-to-r from-molten via-spark to-catalyst bg-clip-text text-transparent mb-2">
                       {stat.metric}
                     </div>
-                    <div className="text-sm font-bold text-forge dark:text-white">
+                    <div className="text-sm font-bold text-foreground">
                       {stat.label}
                     </div>
                   </div>
@@ -152,7 +152,7 @@ export default function AboutPage() {
       <section className="py-20">
         <div className="container">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-4xl sm:text-5xl font-black text-forge dark:text-white mb-8">
+            <h2 className="text-4xl sm:text-5xl font-black text-foreground mb-8">
               Our
               <span className="bg-gradient-to-r from-molten to-spark bg-clip-text text-transparent ml-3">
                 Mission
@@ -160,12 +160,12 @@ export default function AboutPage() {
             </h2>
             
             <div className="card p-12 bg-gradient-to-br from-molten/5 via-spark/5 to-catalyst/5 border-molten/20">
-              <blockquote className="text-2xl lg:text-3xl text-gray-600 dark:text-gray-300 font-medium italic leading-relaxed mb-8">
+              <blockquote className="text-2xl lg:text-3xl text-muted-foreground font-medium italic leading-relaxed mb-8">
                 &ldquo;To democratize exponential growth by making cutting-edge AI technology, creator networks, 
                 and strategic systems accessible to businesses of all sizes.&rdquo;
               </blockquote>
               
-              <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
                 We believe every business deserves the opportunity to achieve extraordinary growth. 
                 That&apos;s why we&apos;ve created the Foundry Method™—a proven framework that levels 
                 the playing field and gives you the same advantages as industry giants.
@@ -179,13 +179,13 @@ export default function AboutPage() {
       <section className="py-20 bg-gray-50 dark:bg-gray-900">
         <div className="container">
           <div className="text-center mb-16">
-            <h2 className="text-4xl sm:text-5xl font-black text-forge dark:text-white mb-6">
+            <h2 className="text-4xl sm:text-5xl font-black text-foreground mb-6">
               Our
               <span className="bg-gradient-to-r from-spark to-catalyst bg-clip-text text-transparent ml-3">
                 Values
               </span>
             </h2>
-            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               These principles guide everything we do and shape how we partner with our clients.
             </p>
           </div>
@@ -204,11 +204,11 @@ export default function AboutPage() {
                     <Icon className="h-8 w-8 text-white" />
                   </div>
                   
-                  <h3 className="text-2xl font-bold text-forge dark:text-white mb-4">
+                  <h3 className="text-2xl font-bold text-foreground mb-4">
                     {value.title}
                   </h3>
                   
-                  <p className="text-gray-600 dark:text-gray-300 text-lg">
+                  <p className="text-muted-foreground text-lg">
                     {value.description}
                   </p>
                 </div>
@@ -222,13 +222,13 @@ export default function AboutPage() {
       <section className="py-20">
         <div className="container">
           <div className="text-center mb-16">
-            <h2 className="text-4xl sm:text-5xl font-black text-forge dark:text-white mb-6">
+            <h2 className="text-4xl sm:text-5xl font-black text-foreground mb-6">
               Our
               <span className="bg-gradient-to-r from-molten to-catalyst bg-clip-text text-transparent ml-3">
                 Journey
               </span>
             </h2>
-            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               From a bold vision to proven results—here&apos;s how we&apos;ve grown alongside our clients.
             </p>
           </div>
@@ -245,14 +245,14 @@ export default function AboutPage() {
                   
                   <div className="flex-1 card p-6">
                     <div className="flex items-center justify-between mb-3">
-                      <h3 className="text-xl font-bold text-forge dark:text-white">
+                      <h3 className="text-xl font-bold text-foreground">
                         {milestone.title}
                       </h3>
                       <span className="text-sm font-medium text-catalyst">
                         {milestone.metric}
                       </span>
                     </div>
-                    <p className="text-gray-600 dark:text-gray-300">
+                    <p className="text-muted-foreground">
                       {milestone.description}
                     </p>
                   </div>
@@ -267,13 +267,13 @@ export default function AboutPage() {
       <section className="py-20 bg-gray-50 dark:bg-gray-900">
         <div className="container">
           <div className="text-center mb-16">
-            <h2 className="text-4xl sm:text-5xl font-black text-forge dark:text-white mb-6">
+            <h2 className="text-4xl sm:text-5xl font-black text-foreground mb-6">
               Meet the
               <span className="bg-gradient-to-r from-spark to-catalyst bg-clip-text text-transparent ml-3">
                 Team
               </span>
             </h2>
-            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               The experts behind your transformation—each bringing unique expertise to drive your success.
             </p>
           </div>
@@ -286,7 +286,7 @@ export default function AboutPage() {
                     <Users className="h-8 w-8 text-white" />
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold text-forge dark:text-white mb-1">
+                    <h3 className="text-xl font-bold text-foreground mb-1">
                       {member.name}
                     </h3>
                     <p className="text-molten font-medium">
@@ -295,12 +295,12 @@ export default function AboutPage() {
                   </div>
                 </div>
                 
-                <p className="text-gray-600 dark:text-gray-300 mb-4">
+                <p className="text-muted-foreground mb-4">
                   {member.bio}
                 </p>
                 
                 <div className="space-y-2">
-                  <h4 className="text-sm font-semibold text-gray-700 dark:text-gray-300">
+                  <h4 className="text-sm font-semibold text-foreground">
                     Expertise:
                   </h4>
                   <div className="flex flex-wrap gap-2">
@@ -330,14 +330,14 @@ export default function AboutPage() {
               </div>
             </div>
             
-            <h2 className="text-4xl sm:text-5xl font-black text-forge dark:text-white mb-6">
+            <h2 className="text-4xl sm:text-5xl font-black text-foreground mb-6">
               Ready to Partner
               <span className="block bg-gradient-to-r from-molten to-catalyst bg-clip-text text-transparent">
                 with Us?
               </span>
             </h2>
             
-            <p className="text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto">
+            <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
               Join the businesses that trust FuseFoundry to transform their operations and 
               achieve exponential growth through proven strategies.
             </p>
@@ -352,7 +352,7 @@ export default function AboutPage() {
               </button>
             </div>
             
-            <div className="mt-8 flex items-center justify-center text-sm text-gray-500 dark:text-gray-400">
+            <div className="mt-8 flex items-center justify-center text-sm text-muted-foreground">
               <CheckCircle className="h-4 w-4 mr-2 text-catalyst" />
               Free consultation • Custom strategy • Proven results
             </div>

@@ -70,14 +70,14 @@ export default function CaseStudiesPage() {
               Proven Results
             </div>
             
-            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black text-forge dark:text-white mb-6">
+            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black text-foreground mb-6">
               Success
               <span className="block bg-gradient-to-r from-molten via-spark to-catalyst bg-clip-text text-transparent">
                 Stories
               </span>
             </h1>
             
-            <p className="text-xl sm:text-2xl text-gray-600 dark:text-gray-300 mb-8 max-w-3xl mx-auto">
+            <p className="text-xl sm:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto">
               See how we&apos;ve helped businesses achieve exponential growth through AI innovation, 
               creator partnerships, and strategic growth systems.
             </p>
@@ -88,10 +88,10 @@ export default function CaseStudiesPage() {
                   <div className="text-3xl sm:text-4xl font-black bg-gradient-to-r from-molten via-spark to-catalyst bg-clip-text text-transparent mb-2">
                     {stat.metric}
                   </div>
-                  <div className="text-sm font-bold text-forge dark:text-white mb-1">
+                  <div className="text-sm font-bold text-foreground mb-1">
                     {stat.label}
                   </div>
-                  <div className="text-xs text-gray-500 dark:text-gray-400">
+                  <div className="text-xs text-muted-foreground">
                     {stat.sublabel}
                   </div>
                 </div>
@@ -105,13 +105,13 @@ export default function CaseStudiesPage() {
       <section className="py-20">
         <div className="container">
           <div className="text-center mb-12">
-            <h2 className="text-4xl sm:text-5xl font-black text-forge dark:text-white mb-6">
+            <h2 className="text-4xl sm:text-5xl font-black text-foreground mb-6">
               Featured
               <span className="bg-gradient-to-r from-molten to-spark bg-clip-text text-transparent ml-3">
                 Success Story
               </span>
             </h2>
-            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               Our most impactful transformation showcasing the full power of the Foundry Method.
             </p>
           </div>
@@ -130,16 +130,16 @@ export default function CaseStudiesPage() {
         <div className="container">
           <div className="flex flex-col lg:flex-row gap-6 items-center justify-between">
             <div className="flex items-center space-x-4">
-              <Filter className="h-5 w-5 text-gray-500 dark:text-gray-400" />
-              <span className="font-medium text-gray-700 dark:text-gray-300">Filter by:</span>
+              <Filter className="h-5 w-5 text-muted-foreground" />
+              <span className="font-medium text-foreground">Filter by:</span>
               
-              <select className="px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300">
+              <select className="px-4 py-2 border border-border rounded-lg bg-background text-foreground">
                 {industries.map(industry => (
                   <option key={industry} value={industry}>{industry}</option>
                 ))}
               </select>
               
-              <select className="px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300">
+              <select className="px-4 py-2 border border-border rounded-lg bg-background text-foreground">
                 {solutions.map(solution => (
                   <option key={solution} value={solution}>{solution}</option>
                 ))}
@@ -147,11 +147,11 @@ export default function CaseStudiesPage() {
             </div>
             
             <div className="relative">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400 dark:text-gray-500" />
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-muted-foreground" />
               <input
                 type="text"
                 placeholder="Search case studies..."
-                className="pl-10 pr-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 w-64"
+                className="pl-10 pr-4 py-2 border border-border rounded-lg bg-background text-foreground w-64"
               />
             </div>
           </div>
@@ -162,13 +162,13 @@ export default function CaseStudiesPage() {
       <section className="py-20">
         <div className="container">
           <div className="text-center mb-12">
-            <h2 className="text-4xl sm:text-5xl font-black text-forge dark:text-white mb-6">
+            <h2 className="text-4xl sm:text-5xl font-black text-foreground mb-6">
               More
               <span className="bg-gradient-to-r from-spark to-catalyst bg-clip-text text-transparent ml-3">
                 Success Stories
               </span>
             </h2>
-            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               Every business is unique. See how we&apos;ve tackled different challenges across various industries.
             </p>
           </div>
@@ -189,13 +189,13 @@ export default function CaseStudiesPage() {
       <section className="py-20 bg-gray-50 dark:bg-gray-900">
         <div className="container">
           <div className="text-center mb-16">
-            <h2 className="text-4xl sm:text-5xl font-black text-forge dark:text-white mb-6">
+            <h2 className="text-4xl sm:text-5xl font-black text-foreground mb-6">
               What Our
               <span className="bg-gradient-to-r from-molten to-catalyst bg-clip-text text-transparent ml-3">
                 Clients Say
               </span>
             </h2>
-            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               Don&apos;t just take our word for it. Hear directly from the leaders who&apos;ve transformed 
               their businesses with FuseFoundry.
             </p>
@@ -219,14 +219,14 @@ export default function CaseStudiesPage() {
               </div>
             </div>
             
-            <h2 className="text-4xl sm:text-5xl font-black text-forge dark:text-white mb-6">
+            <h2 className="text-4xl sm:text-5xl font-black text-foreground mb-6">
               Ready to Write Your
               <span className="block bg-gradient-to-r from-molten to-catalyst bg-clip-text text-transparent">
                 Success Story?
               </span>
             </h2>
             
-            <p className="text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto">
+            <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
               Join the growing list of businesses that have transformed their operations and 
               achieved exponential growth with FuseFoundry.
             </p>
@@ -241,7 +241,7 @@ export default function CaseStudiesPage() {
               </button>
             </div>
             
-            <div className="mt-8 text-sm text-gray-500 dark:text-gray-400">
+            <div className="mt-8 text-sm text-muted-foreground">
               Free consultation • Custom growth plan • No obligation
             </div>
           </div>

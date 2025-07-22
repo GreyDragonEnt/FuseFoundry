@@ -4,7 +4,7 @@ import { useState } from 'react'
 import Link from 'next/link'
 import { Menu, X, Moon, Sun } from 'lucide-react'
 import { cn } from '@/lib/utils'
-import { useTheme } from './ThemeProvider'
+import { useThemeSafe } from './ThemeProvider'
 import FuseFoundryLogo from './FuseFoundryLogo'
 
 interface NavbarProps {
@@ -22,12 +22,11 @@ const navigation = [
 
 export default function Navbar({ className }: NavbarProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-  const { isDark, toggleTheme } = useTheme()
+  const { isDark, toggleTheme, mounted } = useThemeSafe()
 
   return (
     <nav className={cn(
-      'sticky top-0 z-50 bg-white-hot/95 backdrop-blur-md border-b border-gray-200',
-      'dark:bg-forge/95 dark:border-gray-700',
+      'sticky top-0 z-50 bg-background/95 backdrop-blur-md border-b border-border',
       className
     )}>
       <div className="container">
@@ -44,8 +43,7 @@ export default function Navbar({ className }: NavbarProps) {
                 key={item.name}
                 href={item.href}
                 className={cn(
-                  'text-forge hover:text-molten transition-colors duration-200',
-                  'dark:text-white dark:hover:text-catalyst',
+                  'text-foreground hover:text-molten transition-colors duration-200',
                   'font-medium text-sm focus-visible:outline-molten'
                 )}
               >
@@ -54,21 +52,22 @@ export default function Navbar({ className }: NavbarProps) {
             ))}
             
             {/* Dark mode toggle */}
-            <button
-              onClick={toggleTheme}
-              className={cn(
-                'p-2 rounded-lg bg-gray-100 hover:bg-gray-200',
-                'dark:bg-gray-800 dark:hover:bg-gray-700',
-                'transition-colors duration-200 focus-visible:outline-molten'
-              )}
-              aria-label="Toggle dark mode"
-            >
-              {isDark ? (
-                <Sun className="h-5 w-5 text-spark" />
-              ) : (
-                <Moon className="h-5 w-5 text-forge dark:text-white" />
-              )}
-            </button>
+            {mounted && (
+              <button
+                onClick={toggleTheme}
+                className={cn(
+                  'p-2 rounded-lg bg-secondary hover:bg-muted',
+                  'transition-colors duration-200 focus-visible:outline-molten'
+                )}
+                aria-label="Toggle dark mode"
+              >
+                {isDark ? (
+                  <Sun className="h-5 w-5 text-spark" />
+                ) : (
+                  <Moon className="h-5 w-5 text-foreground" />
+                )}
+              </button>
+            )}
 
             {/* CTA Button */}
             <Link
@@ -81,27 +80,27 @@ export default function Navbar({ className }: NavbarProps) {
 
           {/* Mobile menu button */}
           <div className="md:hidden flex items-center space-x-4">
-            <button
-              onClick={toggleTheme}
-              className={cn(
-                'p-2 rounded-lg bg-gray-100 hover:bg-gray-200',
-                'dark:bg-gray-800 dark:hover:bg-gray-700',
-                'transition-colors duration-200 focus-visible:outline-molten'
-              )}
-              aria-label="Toggle dark mode"
-            >
-              {isDark ? (
-                <Sun className="h-5 w-5 text-spark" />
-              ) : (
-                <Moon className="h-5 w-5 text-forge dark:text-white" />
-              )}
-            </button>
+            {mounted && (
+              <button
+                onClick={toggleTheme}
+                className={cn(
+                  'p-2 rounded-lg bg-secondary hover:bg-muted',
+                  'transition-colors duration-200 focus-visible:outline-molten'
+                )}
+                aria-label="Toggle dark mode"
+              >
+                {isDark ? (
+                  <Sun className="h-5 w-5 text-spark" />
+                ) : (
+                  <Moon className="h-5 w-5 text-foreground" />
+                )}
+              </button>
+            )}
             
             <button
               type="button"
               className={cn(
-                'p-2 rounded-lg text-forge hover:text-molten',
-                'dark:text-white dark:hover:text-catalyst',
+                'p-2 rounded-lg text-foreground hover:text-molten',
                 'transition-colors duration-200 focus-visible:outline-molten'
               )}
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -120,15 +119,14 @@ export default function Navbar({ className }: NavbarProps) {
         {/* Mobile Navigation Menu */}
         {mobileMenuOpen && (
           <div className="md:hidden">
-            <div className="px-2 pt-2 pb-3 space-y-1 bg-white border-t border-gray-200 dark:bg-forge dark:border-gray-700">
+            <div className="px-2 pt-2 pb-3 space-y-1 bg-card border-t border-border">
               {navigation.map((item) => (
                 <Link
                   key={item.name}
                   href={item.href}
                   className={cn(
                     'block px-3 py-3 text-base font-medium',
-                    'text-forge hover:text-molten hover:bg-gray-50',
-                    'dark:text-white dark:hover:text-catalyst dark:hover:bg-gray-800',
+                    'text-foreground hover:text-molten hover:bg-muted',
                     'transition-colors duration-200 rounded-lg',
                     'focus-visible:outline-molten min-h-[48px] flex items-center'
                   )}

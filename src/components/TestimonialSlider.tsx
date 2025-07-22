@@ -69,7 +69,7 @@ export default function TestimonialSlider({
   if (!testimonials || testimonials.length === 0) {
     return (
       <div className="text-center py-12">
-        <p className="text-gray-500 dark:text-gray-400">No testimonials available</p>
+        <p className="text-muted-foreground">No testimonials available</p>
       </div>
     )
   }
@@ -101,32 +101,32 @@ export default function TestimonialSlider({
                         'h-5 w-5 mx-1',
                         i < testimonial.rating 
                           ? 'text-yellow-400 fill-current' 
-                          : 'text-gray-300 dark:text-gray-600'
+                          : 'text-muted'
                       )} 
                     />
                   ))}
                 </div>
 
                 {/* Quote */}
-                <blockquote className="text-xl lg:text-2xl text-gray-600 dark:text-gray-300 mb-8 italic font-medium leading-relaxed">
+                <blockquote className="text-xl lg:text-2xl text-muted-foreground mb-8 italic font-medium leading-relaxed">
                   &ldquo;{testimonial.quote}&rdquo;
                 </blockquote>
 
                 {/* Author info */}
-                <div className="border-t pt-6">
+                <div className="border-t border-border pt-6">
                   <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
                     <div className="text-center sm:text-left">
-                      <div className="font-bold text-lg text-forge dark:text-white">
+                      <div className="font-bold text-lg text-foreground">
                         {testimonial.author}
                       </div>
-                      <div className="text-gray-600 dark:text-gray-400">
+                      <div className="text-muted-foreground">
                         {testimonial.position}
                       </div>
-                      <div className="text-gray-500 dark:text-gray-400 text-sm">
+                      <div className="text-muted-foreground text-sm">
                         {testimonial.company}
                       </div>
                       {testimonial.industry && (
-                        <div className="text-xs text-gray-400 dark:text-gray-600 mt-1">
+                        <div className="text-xs text-muted-foreground mt-1">
                           {testimonial.industry}
                         </div>
                       )}
@@ -152,18 +152,18 @@ export default function TestimonialSlider({
         <>
           <button
             onClick={goToPrevious}
-            className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white dark:bg-gray-800 shadow-lg flex items-center justify-center hover:shadow-xl transition-all group border border-gray-200 dark:border-gray-700"
+            className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-card shadow-lg flex items-center justify-center hover:shadow-xl transition-all group border border-border"
             aria-label="Previous testimonial"
           >
-            <ChevronLeft className="h-6 w-6 text-gray-600 dark:text-gray-400 group-hover:text-molten transition-colors" />
+            <ChevronLeft className="h-6 w-6 text-muted-foreground group-hover:text-molten transition-colors" />
           </button>
           
           <button
             onClick={goToNext}
-            className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white dark:bg-gray-800 shadow-lg flex items-center justify-center hover:shadow-xl transition-all group border border-gray-200 dark:border-gray-700"
+            className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-card shadow-lg flex items-center justify-center hover:shadow-xl transition-all group border border-border"
             aria-label="Next testimonial"
           >
-            <ChevronRight className="h-6 w-6 text-gray-600 dark:text-gray-400 group-hover:text-molten transition-colors" />
+            <ChevronRight className="h-6 w-6 text-muted-foreground group-hover:text-molten transition-colors" />
           </button>
         </>
       )}
@@ -179,7 +179,7 @@ export default function TestimonialSlider({
                 'w-3 h-3 rounded-full transition-all',
                 index === currentIndex
                   ? 'bg-molten scale-125'
-                  : 'bg-gray-300 dark:bg-gray-600 hover:bg-gray-400 dark:hover:bg-gray-500'
+                  : 'bg-muted hover:bg-muted-foreground'
               )}
               aria-label={`Go to testimonial ${index + 1}`}
             />
@@ -190,10 +190,10 @@ export default function TestimonialSlider({
       {/* Progress indicator */}
       {testimonials.length > 1 && (
         <div className="mt-6">
-          <div className="text-center text-sm text-gray-500 dark:text-gray-400 mb-2">
+          <div className="text-center text-sm text-muted-foreground mb-2">
             {currentIndex + 1} of {testimonials.length}
           </div>
-          <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-1 max-w-xs mx-auto">
+          <div className="w-full bg-muted rounded-full h-1 max-w-xs mx-auto">
             <div 
               className="bg-gradient-to-r from-molten to-spark h-1 rounded-full transition-all duration-500"
               style={{ width: `${((currentIndex + 1) / testimonials.length) * 100}%` }}
