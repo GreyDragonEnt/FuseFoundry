@@ -36,6 +36,7 @@ jobs:
       run: npm run build
       env:
         GITHUB_PAGES: true
+        GOOGLE_AI_API_KEY: ${{ secrets.GOOGLE_AI_API_KEY }}
     
     - name: Setup Pages
       uses: actions/configure-pages@v4

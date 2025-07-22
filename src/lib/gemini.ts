@@ -27,6 +27,9 @@ export class GeminiAPI {
 
   constructor(apiKey?: string) {
     this.apiKey = apiKey || process.env.GOOGLE_AI_API_KEY || '';
+  }
+
+  private checkApiKey(): void {
     if (!this.apiKey) {
       throw new Error('Google AI API key is required. Please set GOOGLE_AI_API_KEY in your environment variables.');
     }
@@ -36,6 +39,8 @@ export class GeminiAPI {
     prompt: string,
     model: string = 'gemini-2.0-flash'
   ): Promise<GeminiResponse> {
+    this.checkApiKey();
+    
     const url = `${this.baseUrl}/models/${model}:generateContent`;
     
     const response = await fetch(url, {

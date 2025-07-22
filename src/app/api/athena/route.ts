@@ -2,12 +2,14 @@ import { NextRequest, NextResponse } from 'next/server';
 
 export async function POST(request: NextRequest) {
   try {
-    // For static export builds, return a service unavailable response
+    // For static export builds (GitHub Pages), this API won't be available
+    // The client-side code should handle this gracefully
     if (process.env.GITHUB_PAGES === 'true') {
       return NextResponse.json(
         { 
-          error: 'AI service temporarily unavailable',
-          message: 'Please contact us directly for assistance.'
+          error: 'AI service requires server-side functionality',
+          message: 'Please contact us directly for personalized assistance.',
+          suggestion: 'Use our contact form to describe your business needs and we\'ll provide tailored recommendations.'
         },
         { status: 503 }
       );
@@ -18,7 +20,8 @@ export async function POST(request: NextRequest) {
       return NextResponse.json(
         { 
           error: 'AI service temporarily unavailable',
-          message: 'Please contact us directly for assistance.'
+          message: 'Please contact us directly for assistance.',
+          suggestion: 'Our team is ready to help you personally. Use the contact form below.'
         },
         { status: 503 }
       );
