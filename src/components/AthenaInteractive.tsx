@@ -37,6 +37,7 @@ export default function AthenaInteractive({
   const [isLoading, setIsLoading] = useState(false)
   const [teaserCount, setTeaserCount] = useState(0)
   const [showLeadCapture, setShowLeadCapture] = useState(false)
+  const [hasInteracted, setHasInteracted] = useState(false)
   const messagesEndRef = useRef<HTMLDivElement>(null)
 
   const scrollToBottom = () => {
@@ -44,12 +45,18 @@ export default function AthenaInteractive({
   }
 
   useEffect(() => {
-    scrollToBottom()
-  }, [messages])
+    // Only auto-scroll if user has interacted (sent a message)
+    if (hasInteracted) {
+      scrollToBottom()
+    }
+  }, [messages, hasInteracted])
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     if (!input.trim() || isLoading) return
+
+    // Mark that user has interacted (enables auto-scroll)
+    setHasInteracted(true)
 
     // Check if we've reached the teaser limit
     if (mode === 'teaser' && teaserCount >= maxTeaserMessages) {
