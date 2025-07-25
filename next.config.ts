@@ -4,17 +4,11 @@ const nextConfig: NextConfig = {
   // Enable React strict mode for better development experience
   reactStrictMode: true,
   
-  // GitHub Pages configuration (only when building for GitHub Pages)
-  ...(process.env.GITHUB_PAGES === 'true' && {
-    output: 'export',
-    trailingSlash: true,
-    basePath: '/FuseFoundry',
-    assetPrefix: '/FuseFoundry/',
-  }),
+  // VPS deployment - no static export needed
+  // Removed GitHub Pages static export configuration to support API routes
   
-  // Image optimization configuration (disabled for static export)
+  // Image optimization configuration
   images: {
-    unoptimized: true,
     formats: ['image/avif', 'image/webp'],
     deviceSizes: [320, 640, 768, 1024, 1440],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],

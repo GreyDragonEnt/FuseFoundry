@@ -2,19 +2,6 @@ import { NextRequest, NextResponse } from 'next/server';
 
 export async function POST(request: NextRequest) {
   try {
-    // For static export builds (GitHub Pages), this API won't be available
-    // The client-side code should handle this gracefully
-    if (process.env.GITHUB_PAGES === 'true') {
-      return NextResponse.json(
-        { 
-          error: 'AI service requires server-side functionality',
-          message: 'Please contact us directly for personalized assistance.',
-          suggestion: 'Use our contact form to describe your business needs and we\'ll provide tailored recommendations.'
-        },
-        { status: 503 }
-      );
-    }
-
     // Check if API key is available
     if (!process.env.GOOGLE_AI_API_KEY) {
       return NextResponse.json(
