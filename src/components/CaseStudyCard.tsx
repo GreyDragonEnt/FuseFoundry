@@ -2,6 +2,7 @@
 
 import { ArrowRight, TrendingUp, Clock, ExternalLink } from 'lucide-react'
 import { cn } from '@/lib/utils'
+import { getTextClasses } from '@/lib/theme-utils'
 import Link from 'next/link'
 
 interface CaseStudy {
@@ -40,35 +41,41 @@ export default function CaseStudyCard({
 
   return (
     <div className={cn(
-      'card overflow-hidden transition-all duration-300 group hover:shadow-xl',
+      'card p-8 hover:shadow-xl transition-all duration-300 group',
       isFeatured && 'ring-2 ring-molten/20 shadow-lg',
-      isCompact ? 'p-4' : 'p-6',
       className
     )}>
       {/* Header */}
       <div className="flex items-start justify-between mb-4">
         <div className="flex-1">
           {isFeatured && (
-            <div className="inline-flex items-center px-2 py-1 rounded-full bg-molten/10 text-molten text-xs font-semibold mb-2">
-              <TrendingUp className="h-3 w-3 mr-1" />
+            <div className="inline-flex items-center px-3 py-1 rounded-full bg-molten/10 text-molten text-sm font-medium mb-4">
+              <TrendingUp className="h-4 w-4 mr-2" />
               Featured Case Study
             </div>
           )}
           
           <h3 className={cn(
-            'font-bold text-forge dark:text-white mb-2 group-hover:text-molten transition-colors',
+            getTextClasses('heading'),
+            'font-bold mb-2 transition-colors',
             isCompact ? 'text-lg' : 'text-xl lg:text-2xl'
           )}>
             {caseStudy.title}
           </h3>
           
-          <div className="flex items-center text-gray-600 dark:text-gray-400 text-sm mb-2">
+          <div className={cn(
+            getTextClasses('secondary'),
+            'text-sm mb-2 flex items-center'
+          )}>
             <span className="font-medium">{caseStudy.company}</span>
             <span className="mx-2">•</span>
             <span>{caseStudy.industry}</span>
           </div>
           
-          <div className="flex items-center text-gray-500 dark:text-gray-400 text-sm">
+          <div className={cn(
+            getTextClasses('muted'),
+            'text-sm flex items-center'
+          )}>
             <Clock className="h-4 w-4 mr-1" />
             <span>{caseStudy.duration}</span>
           </div>
@@ -76,7 +83,7 @@ export default function CaseStudyCard({
         
         {!isCompact && (
           <div className="flex-shrink-0 ml-4">
-            <div className="w-12 h-12 rounded-full bg-gradient-to-br from-spark to-catalyst flex items-center justify-center">
+            <div className="p-3 bg-brand-gradient rounded-xl">
               <ExternalLink className="h-6 w-6 text-white" />
             </div>
           </div>
@@ -88,13 +95,13 @@ export default function CaseStudyCard({
         {caseStudy.tags.slice(0, isCompact ? 2 : 4).map((tag, index) => (
           <span 
             key={index}
-            className="px-2 py-1 bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 text-xs rounded-full"
+            className={cn("px-2 py-1 text-xs rounded-full bg-muted/30 border border-border", getTextClasses('secondary'))}
           >
             {tag}
           </span>
         ))}
         {caseStudy.tags.length > (isCompact ? 2 : 4) && (
-          <span className="px-2 py-1 bg-gray-100 dark:bg-gray-800 text-gray-500 dark:text-gray-400 text-xs rounded-full">
+          <span className={cn("px-2 py-1 text-xs rounded-full bg-muted/20 border border-border", getTextClasses('muted'))}>
             +{caseStudy.tags.length - (isCompact ? 2 : 4)} more
           </span>
         )}
@@ -104,15 +111,19 @@ export default function CaseStudyCard({
       {!isCompact && (
         <div className="space-y-4 mb-6">
           <div>
-            <h4 className="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Challenge</h4>
-            <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
+            <h4 className={cn(getTextClasses('secondary'), 'text-sm font-semibold mb-2')}>
+              Challenge
+            </h4>
+            <p className={cn(getTextClasses('muted'), 'text-sm leading-relaxed')}>
               {caseStudy.challenge}
             </p>
           </div>
           
           <div>
-            <h4 className="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Solution</h4>
-            <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
+            <h4 className={cn(getTextClasses('secondary'), 'text-sm font-semibold mb-2')}>
+              Solution
+            </h4>
+            <p className={cn(getTextClasses('muted'), 'text-sm leading-relaxed')}>
               {caseStudy.solution}
             </p>
           </div>
@@ -122,7 +133,8 @@ export default function CaseStudyCard({
       {/* Results */}
       <div className="mb-6">
         <h4 className={cn(
-          'font-semibold text-gray-700 dark:text-gray-300 mb-3',
+          getTextClasses('secondary'),
+          'font-semibold mb-3',
           isCompact ? 'text-sm' : 'text-base'
         )}>
           Key Results
@@ -133,21 +145,22 @@ export default function CaseStudyCard({
           isCompact ? 'grid-cols-1' : 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3'
         )}>
           {caseStudy.results.slice(0, isCompact ? 2 : 3).map((result, index) => (
-            <div key={index} className="text-center p-3 bg-gray-50 dark:bg-gray-800/50 rounded-lg">
+            <div key={index} className="text-center p-3 bg-muted/30 dark:bg-muted/20 rounded-lg border border-border">
               <div className={cn(
-                'font-black bg-gradient-to-r from-molten to-catalyst bg-clip-text text-transparent mb-1',
+                'font-black bg-gradient-to-r from-molten via-spark to-catalyst bg-clip-text text-transparent mb-1',
                 isCompact ? 'text-xl' : 'text-2xl'
               )}>
                 {result.value}
               </div>
               <div className={cn(
-                'font-medium text-gray-700 dark:text-gray-300 mb-1',
+                getTextClasses('secondary'),
+                'font-medium mb-1',
                 isCompact ? 'text-xs' : 'text-sm'
               )}>
                 {result.metric}
               </div>
               {!isCompact && (
-                <div className="text-xs text-gray-500 dark:text-gray-400">
+                <div className={cn(getTextClasses('muted'), 'text-xs')}>
                   {result.description}
                 </div>
               )}
@@ -157,7 +170,7 @@ export default function CaseStudyCard({
         
         {caseStudy.results.length > (isCompact ? 2 : 3) && (
           <div className="text-center mt-2">
-            <span className="text-xs text-gray-500 dark:text-gray-400">
+            <span className={cn(getTextClasses('muted'), 'text-xs')}>
               +{caseStudy.results.length - (isCompact ? 2 : 3)} more results
             </span>
           </div>
@@ -166,10 +179,10 @@ export default function CaseStudyCard({
 
       {/* CTA */}
       {showCTA && (
-        <div className="border-t pt-4">
+        <div className="border-t border-gray-200 dark:border-gray-700 pt-4">
           <Link 
             href={`/case-studies/${caseStudy.id}`}
-            className="inline-flex items-center text-molten hover:text-spark transition-colors font-medium group/link"
+            className="inline-flex items-center text-molten hover:text-molten/80 dark:text-molten dark:hover:text-molten/80 transition-colors font-medium group/link"
           >
             <span className={isCompact ? 'text-sm' : 'text-base'}>
               Read Full Case Study

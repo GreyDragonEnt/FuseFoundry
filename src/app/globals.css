@@ -41,6 +41,11 @@
   }
 
   .dark {
+    --molten: #FF6A2C;
+    --spark: #FFC84A;
+    --catalyst: #18E0DF;
+    --forge: #202326;
+    --white-hot: #F5F5F5;
     --background: 0 0% 3.9%;
     --foreground: 0 0% 98%;
     --card: 0 0% 3.9%;
@@ -68,16 +73,30 @@
   }
 
   * {
-    @apply border-border;
+    border-color: hsl(var(--border));
   }
 
   body {
-    @apply bg-background text-foreground antialiased;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+  }
+
+  /* Ensure dark theme is properly applied */
+  html.dark {
+    color-scheme: dark;
+  }
+
+  html.dark body {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
   }
 
   /* Focus styles for accessibility */
   :focus-visible {
-    @apply outline-2 outline-offset-2 outline-molten;
+    outline: 2px solid #FF6A2C;
+    outline-offset: 2px;
   }
 
   /* Disable animations for users who prefer reduced motion */
@@ -95,33 +114,192 @@
 @layer components {
   /* Container custom */
   .container-custom {
-    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+    max-width: 80rem;
+    margin: 0 auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  @media (min-width: 640px) {
+    .container-custom {
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .container-custom {
+      padding-left: 4rem;
+      padding-right: 4rem;
+    }
   }
 
   /* Button variants */
   .btn-primary {
-    @apply bg-brand-gradient text-white font-semibold px-6 py-3 rounded-lg;
-    @apply hover:shadow-lg active:scale-95 transition-all duration-200;
-    @apply focus-visible:outline-molten;
+    background: linear-gradient(45deg, #FF6A2C 0%, #FFC84A 50%, #18E0DF 100%);
+    color: white;
+    font-weight: 600;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    transition: all 0.2s;
+  }
+
+  .btn-primary:hover {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  }
+
+  .btn-primary:active {
+    transform: scale(0.95);
   }
 
   .btn-secondary {
-    @apply bg-white border-2 border-molten text-molten font-semibold px-6 py-3 rounded-lg;
-    @apply hover:bg-molten hover:text-white transition-all duration-200;
-    @apply dark:bg-forge dark:border-catalyst dark:text-catalyst;
-    @apply dark:hover:bg-catalyst dark:hover:text-forge;
-    @apply focus-visible:outline-catalyst;
+    background: white;
+    border: 2px solid #FF6A2C;
+    color: #FF6A2C;
+    font-weight: 600;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    transition: all 0.2s;
+  }
+
+  .btn-secondary:hover {
+    background: #FF6A2C;
+    color: white;
+  }
+
+  .dark .btn-secondary {
+    background: #202326;
+    border-color: #18E0DF;
+    color: #18E0DF;
+  }
+
+  .dark .btn-secondary:hover {
+    background: #18E0DF;
+    color: #202326;
   }
 
   /* Text gradients */
   .text-gradient {
-    @apply bg-brand-gradient bg-clip-text text-transparent;
+    background: linear-gradient(45deg, #FF6A2C 0%, #FFC84A 50%, #18E0DF 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
   }
 
   /* Card styles */
   .card {
-    @apply bg-white border border-gray-200 rounded-xl shadow-sm;
-    @apply dark:bg-forge dark:border-gray-700;
-    @apply transition-shadow duration-200;
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.75rem;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.2s;
+  }
+
+  .dark .card {
+    background: #202326;
+    border-color: #374151;
+  }
+
+  /* Interactive card with hover effects */
+  .card-interactive {
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.75rem;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+
+  .card-interactive:hover {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    transform: translateY(-0.25rem);
+  }
+
+  .dark .card-interactive {
+    background: #202326;
+    border-color: #374151;
+  }
+
+  /* Gradient backgrounds */
+  .bg-molten-glow {
+    background: radial-gradient(circle at center, rgba(255, 106, 44, 0.1) 0%, transparent 70%);
+  }
+
+  .bg-catalyst-glow {
+    background: radial-gradient(circle at center, rgba(24, 224, 223, 0.1) 0%, transparent 70%);
+  }
+
+  .bg-spark-glow {
+    background: radial-gradient(circle at center, rgba(255, 200, 74, 0.1) 0%, transparent 70%);
+  }
+}
+
+@layer utilities {
+  /* Animation utilities */
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .animate-glow {
+    animation: glow 2s ease-in-out infinite alternate;
+  }
+
+  .animate-slide-in-left {
+    animation: slide-in-left 0.6s ease-out;
+  }
+
+  .animate-slide-in-right {
+    animation: slide-in-right 0.6s ease-out;
+  }
+
+  .animate-fade-in-up {
+    animation: fade-in-up 0.8s ease-out;
+  }
+
+  /* Custom keyframes for additional animations */
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+  }
+
+  @keyframes glow {
+    from { box-shadow: 0 0 20px rgba(255, 106, 44, 0.5); }
+    to { box-shadow: 0 0 30px rgba(24, 224, 223, 0.7); }
+  }
+
+  @keyframes slide-in-left {
+    0% { transform: translateX(-100%); opacity: 0; }
+    100% { transform: translateX(0); opacity: 1; }
+  }
+
+  @keyframes slide-in-right {
+    0% { transform: translateX(100%); opacity: 0; }
+    100% { transform: translateX(0); opacity: 1; }
+  }
+
+  @keyframes fade-in-up {
+    0% { transform: translateY(30px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+  }
+
+  /* Gradient text utilities */
+  .text-molten-gradient {
+    background: linear-gradient(45deg, #FF6A2C, #FFC84A);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .text-catalyst-gradient {
+    background: linear-gradient(45deg, #18E0DF, #4F46E5);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Backdrop blur utilities */
+  .backdrop-blur-glass {
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
   }
 }

@@ -5,6 +5,9 @@ on:
     branches: [ main ]
   workflow_dispatch: # Allow manual triggers
 
+env:
+  NODE_VERSION: '20'
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -16,11 +19,14 @@ jobs:
     - name: Setup Node.js
       uses: actions/setup-node@v4
       with:
-        node-version: '18'
+        node-version: ${{ env.NODE_VERSION }}
         cache: 'npm'
 
     - name: Install dependencies
       run: npm ci
+
+    - name: Run tests
+      run: npm test --if-present
 
     - name: Build application
       run: npm run build
@@ -29,11 +35,12 @@ jobs:
         NEXT_PUBLIC_SITE_URL: ${{ secrets.NEXT_PUBLIC_SITE_URL }}
 
     - name: Deploy to VPS
-      uses: appleboy/ssh-action@v1.0.0
+      uses: appleboy/ssh-action@v1.2.0
       with:
         host: ${{ secrets.VPS_HOST }}
         username: ${{ secrets.VPS_USERNAME }}
         key: ${{ secrets.VPS_SSH_KEY }}
+        timeout: 60s
         script: |
           cd /var/www/fusefoundry
           
@@ -51,15 +58,17 @@ jobs:
           sudo -u fusefoundry npm run build
           
           # Restart application
-          sudo -u fusefoundry pm2 restart fusefoundry
+          sudo -u fusefoundry pm2 restart fusefoundry || sudo -u fusefoundry pm2 start ecosystem.config.js
           
           # Clean up old backups (keep last 5)
-          sudo -u fusefoundry find /var/www/fusefoundry -name ".next.backup.*" -type d | sort -r | tail -n +6 | xargs rm -rf
+          sudo -u fusefoundry find /var/www/fusefoundry -name ".next.backup.*" -type d | sort -r | tail -n +6 | xargs rm -rf || true
           
           echo "✅ Deployment completed successfully!"
 
     - name: Health Check
       run: |
-        sleep 10
-        curl -f ${{ secrets.NEXT_PUBLIC_SITE_URL }}/api/health || exit 1
+        sleep 15
+        echo "🏥 Running health check..."
+        curl -f "${{ secrets.NEXT_PUBLIC_SITE_URL }}/api/health" || exit 1
+        echo "✅ Health check passed!"
       continue-on-error: false

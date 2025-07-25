@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import { Download, X, Smartphone, Monitor } from 'lucide-react'
 import { cn } from '@/lib/utils'
+import { getCardClasses, getTextClasses, getButtonClasses, getInteractiveClasses } from '@/lib/theme-utils'
 
 interface BeforeInstallPromptEvent extends Event {
   readonly platforms: string[]
@@ -66,8 +67,8 @@ export default function PWAInstallPrompt({ className }: PWAInstallPromptProps) {
       
       // Show prompt after a delay if not dismissed before
       setTimeout(() => {
-        const dismissed = localStorage.getItem('pwa-prompt-dismissed')
-        const lastShown = localStorage.getItem('pwa-prompt-last-shown')
+        const dismissed = localStorage.getItem('fusefoundry-pwa-dismissed')
+        const lastShown = localStorage.getItem('fusefoundry-pwa-last-shown')
         const now = Date.now()
         
         // Don't show if dismissed recently (7 days)
@@ -81,7 +82,7 @@ export default function PWAInstallPrompt({ className }: PWAInstallPromptProps) {
         }
         
         setShowPrompt(true)
-        localStorage.setItem('pwa-prompt-last-shown', now.toString())
+        localStorage.setItem('fusefoundry-pwa-last-shown', now.toString())
       }, 3000) // Show after 3 seconds
     }
 
@@ -116,7 +117,7 @@ export default function PWAInstallPrompt({ className }: PWAInstallPromptProps) {
         console.log('PWA: User accepted the install prompt')
       } else {
         console.log('PWA: User dismissed the install prompt')
-        localStorage.setItem('pwa-prompt-dismissed', Date.now().toString())
+        localStorage.setItem('fusefoundry-pwa-dismissed', Date.now().toString())
       }
       
       setDeferredPrompt(null)
@@ -128,7 +129,7 @@ export default function PWAInstallPrompt({ className }: PWAInstallPromptProps) {
 
   const handleDismiss = () => {
     setShowPrompt(false)
-    localStorage.setItem('pwa-prompt-dismissed', Date.now().toString())
+    localStorage.setItem('fusefoundry-pwa-dismissed', Date.now().toString())
   }
 
   // Don't show if already installed or no prompt available
@@ -144,26 +145,38 @@ export default function PWAInstallPrompt({ className }: PWAInstallPromptProps) {
       'md:left-auto md:right-4 md:max-w-md',
       className
     )}>
-      <div className="card p-6 bg-white dark:bg-gray-800 border-molten/20 shadow-xl">
+      <div className={cn(
+        getCardClasses('elevated'),
+        "p-6 border-molten/20 dark:border-molten/20 shadow-xl"
+      )}>
         <div className="flex items-start space-x-4">
           <div className="flex-shrink-0">
-            <div className="w-12 h-12 rounded-full bg-gradient-to-br from-molten to-spark flex items-center justify-center">
+            <div className="w-12 h-12 rounded-full bg-gradient-to-br from-molten via-spark to-catalyst flex items-center justify-center">
               <Icon className="h-6 w-6 text-white" />
             </div>
           </div>
           
           <div className="flex-1 min-w-0">
-            <h3 className="text-lg font-bold text-forge dark:text-white mb-2">
+            <h3 className={cn(
+              getTextClasses('heading'),
+              "text-lg font-bold mb-2"
+            )}>
               Install FuseFoundry App
             </h3>
-            <p className="text-sm text-gray-600 dark:text-gray-300 mb-4">
+            <p className={cn(
+              getTextClasses('secondary'),
+              "text-sm mb-4"
+            )}>
               Get faster access and work offline. Install our app for the best experience.
             </p>
             
             <div className="flex items-center space-x-3">
               <button
                 onClick={handleInstallClick}
-                className="btn-primary text-sm px-4 py-2 flex items-center"
+                className={cn(
+                  getButtonClasses('primary'),
+                  "text-sm px-4 py-2 flex items-center"
+                )}
               >
                 <Download className="h-4 w-4 mr-2" />
                 Install
@@ -171,7 +184,11 @@ export default function PWAInstallPrompt({ className }: PWAInstallPromptProps) {
               
               <button
                 onClick={handleDismiss}
-                className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 text-sm font-medium"
+                className={cn(
+                  getTextClasses('muted'),
+                  getInteractiveClasses(),
+                  "text-sm font-medium"
+                )}
               >
                 Not now
               </button>
@@ -180,7 +197,11 @@ export default function PWAInstallPrompt({ className }: PWAInstallPromptProps) {
           
           <button
             onClick={handleDismiss}
-            className="flex-shrink-0 p-1 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300"
+            className={cn(
+              getTextClasses('muted'),
+              getInteractiveClasses(),
+              "flex-shrink-0 p-1"
+            )}
             aria-label="Dismiss install prompt"
           >
             <X className="h-5 w-5" />
@@ -189,17 +210,17 @@ export default function PWAInstallPrompt({ className }: PWAInstallPromptProps) {
         
         {/* Benefits list */}
         <div className="mt-4 pt-4 border-t border-gray-200 dark:border-gray-700">
-          <div className="text-xs text-gray-500 dark:text-gray-400 space-y-1">
+          <div className={cn(getTextClasses('muted'), "text-xs space-y-1")}>
             <div className="flex items-center">
-              <div className="w-1 h-1 bg-catalyst rounded-full mr-2" />
+              <div className="w-1 h-1 bg-green-500 rounded-full mr-2" />
               <span>Works offline</span>
             </div>
             <div className="flex items-center">
-              <div className="w-1 h-1 bg-catalyst rounded-full mr-2" />
+              <div className="w-1 h-1 bg-green-500 rounded-full mr-2" />
               <span>Faster loading</span>
             </div>
             <div className="flex items-center">
-              <div className="w-1 h-1 bg-catalyst rounded-full mr-2" />
+              <div className="w-1 h-1 bg-green-500 rounded-full mr-2" />
               <span>Native app experience</span>
             </div>
           </div>

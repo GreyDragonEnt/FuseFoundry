@@ -176,7 +176,7 @@ export default function AboutPage() {
       </section>
 
       {/* Core Values */}
-      <section className="py-20 bg-gray-50 dark:bg-gray-900">
+      <section className="py-20 bg-background/50 dark:bg-background">
         <div className="container">
           <div className="text-center mb-16">
             <h2 className="text-4xl sm:text-5xl font-black text-foreground mb-6">
@@ -195,22 +195,26 @@ export default function AboutPage() {
               const Icon = value.icon
               return (
                 <div key={index} className="card p-8 hover:shadow-xl transition-all group">
-                  <div className={`
-                    w-16 h-16 rounded-full flex items-center justify-center mb-6
-                    ${value.color === 'molten' ? 'bg-molten' : ''}
-                    ${value.color === 'spark' ? 'bg-spark' : ''}
-                    ${value.color === 'catalyst' ? 'bg-catalyst' : ''}
-                  `}>
-                    <Icon className="h-8 w-8 text-white" />
+                  <div className="flex items-start space-x-6">
+                    <div className={`
+                      w-16 h-16 rounded-full flex items-center justify-center flex-shrink-0
+                      ${value.color === 'molten' ? 'bg-molten' : ''}
+                      ${value.color === 'spark' ? 'bg-spark' : ''}
+                      ${value.color === 'catalyst' ? 'bg-catalyst' : ''}
+                    `}>
+                      <Icon className="h-8 w-8 text-white" />
+                    </div>
+                    
+                    <div className="flex-1">
+                      <h3 className="text-2xl font-bold text-foreground mb-4">
+                        {value.title}
+                      </h3>
+                      
+                      <p className="text-muted-foreground text-lg">
+                        {value.description}
+                      </p>
+                    </div>
                   </div>
-                  
-                  <h3 className="text-2xl font-bold text-foreground mb-4">
-                    {value.title}
-                  </h3>
-                  
-                  <p className="text-muted-foreground text-lg">
-                    {value.description}
-                  </p>
                 </div>
               )
             })}
@@ -264,7 +268,7 @@ export default function AboutPage() {
       </section>
 
       {/* Team Section */}
-      <section className="py-20 bg-gray-50 dark:bg-gray-900">
+      <section className="py-20 bg-background/50 dark:bg-background">
         <div className="container">
           <div className="text-center mb-16">
             <h2 className="text-4xl sm:text-5xl font-black text-foreground mb-6">

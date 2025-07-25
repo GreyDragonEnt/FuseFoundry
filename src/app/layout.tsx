@@ -6,6 +6,8 @@ import Footer from "@/components/Footer";
 import ServiceWorkerRegistration from "@/components/ServiceWorkerRegistration";
 import PWAInstallPrompt from "@/components/PWAInstallPrompt";
 import { ThemeProvider } from "@/components/ThemeProvider";
+import { CartProvider } from "@/contexts/CartContext";
+import Cart from "@/components/Cart";
 import { Toaster } from "@/components/ui/toaster";
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
@@ -27,14 +29,14 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
-  metadataBase: new URL('https://fusefoundry.com'),
+  metadataBase: new URL('https://fusefoundry.dev'),
   alternates: {
     canonical: '/',
   },
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://fusefoundry.com',
+    url: 'https://fusefoundry.dev',
     title: 'FuseFoundry - AI-Powered Business Transformation',
     description: 'Transform your business with our fusion of AI innovation, creator-powered content, and strategic growth systems.',
     siteName: 'FuseFoundry',
@@ -75,10 +77,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={inter.className}>
+    <html lang="en" className={`${inter.className} dark`} suppressHydrationWarning>
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="theme-color" content="#FF6A2C" />
+        <meta name="color-scheme" content="dark" />
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
@@ -87,29 +90,40 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{
             __html: `
               (function() {
-                const savedTheme = localStorage.getItem('theme');
-                if (savedTheme === 'light') {
-                  document.documentElement.classList.remove('dark');
-                } else {
+                try {
+                  // Force dark theme immediately
                   document.documentElement.classList.add('dark');
+                  document.documentElement.style.colorScheme = 'dark';
+                  
+                  // Set localStorage
+                  localStorage.setItem('fusefoundry-theme', 'dark');
+                  
+                } catch (e) {
+                  console.log('Theme script error:', e);
                 }
-              })()
+              })();
             `,
           }}
         />
       </head>
-      <body className="antialiased">
+      <body 
+        className="antialiased transition-colors duration-200" 
+        suppressHydrationWarning
+      >
         <ThemeProvider>
-          <ServiceWorkerRegistration />
-          <PWAInstallPrompt />
-          <Navbar />
-          <main>
-            {children}
-          </main>
-          <Footer />
-          <Toaster />
-          <Analytics />
-          <SpeedInsights />
+          <CartProvider>
+            <ServiceWorkerRegistration />
+            <PWAInstallPrompt />
+            <Navbar />
+            <main>
+              {children}
+            </main>
+            <Footer />
+            <Cart />
+            <Toaster />
+            <Analytics />
+            <SpeedInsights />
+          </CartProvider>
         </ThemeProvider>
       </body>
     </html>

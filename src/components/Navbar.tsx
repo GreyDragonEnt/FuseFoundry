@@ -1,153 +1,86 @@
-'use client'
+'use client';
 
-import { useState } from 'react'
-import Link from 'next/link'
-import { Menu, X, Moon, Sun } from 'lucide-react'
-import { cn } from '@/lib/utils'
-import { useThemeSafe } from './ThemeProvider'
-import FuseFoundryLogo from './FuseFoundryLogo'
+import Link from 'next/link';
+import { useState } from 'react';
+import { Menu, X } from 'lucide-react';
+import NavbarLogo from './NavbarLogo'
 
-interface NavbarProps {
-  className?: string
-}
+export default function Navbar() {
+  const [isOpen, setIsOpen] = useState(false);
 
-const navigation = [
-  { name: 'Services', href: '/services' },
-  { name: 'AI Athena', href: '/ai-athena' },
-  { name: 'Foundry Method', href: '/foundry-method' },
-  { name: 'Case Studies', href: '/case-studies' },
-  { name: 'About', href: '/about' },
-  { name: 'Contact', href: '/contact' },
-]
-
-export default function Navbar({ className }: NavbarProps) {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-  const { isDark, toggleTheme, mounted } = useThemeSafe()
+  const navItems = [
+    { href: '/', label: 'Home' },
+    { href: '/services', label: 'Services' },
+    { href: '/foundry-method', label: 'Foundry Method' },
+    { href: '/case-studies', label: 'Case Studies' },
+    { href: '/ai-athena', label: 'AI Athena' },
+    { href: '/about', label: 'About' },
+    { href: '/contact', label: 'Contact' },
+  ];
 
   return (
-    <nav className={cn(
-      'sticky top-0 z-50 bg-background/95 backdrop-blur-md border-b border-border',
-      className
-    )}>
-      <div className="container">
-        <div className="flex items-center justify-between h-16 md:h-20">
+    <nav className="bg-background/95 backdrop-blur-md shadow-lg border-b border-border sticky top-0 z-[9999]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <Link href="/" className="flex-shrink-0">
-            <FuseFoundryLogo width={225} height={48} className="transition-transform hover:scale-105" />
-          </Link>
-
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex md:items-center md:space-x-8">
-            {navigation.map((item) => (
-              <Link
-                key={item.name}
-                href={item.href}
-                className={cn(
-                  'text-foreground hover:text-molten transition-colors duration-200',
-                  'font-medium text-sm focus-visible:outline-molten'
-                )}
-              >
-                {item.name}
-              </Link>
-            ))}
-            
-            {/* Dark mode toggle */}
-            {mounted && (
-              <button
-                onClick={toggleTheme}
-                className={cn(
-                  'p-2 rounded-lg bg-secondary hover:bg-muted',
-                  'transition-colors duration-200 focus-visible:outline-molten'
-                )}
-                aria-label="Toggle dark mode"
-              >
-                {isDark ? (
-                  <Sun className="h-5 w-5 text-spark" />
-                ) : (
-                  <Moon className="h-5 w-5 text-foreground" />
-                )}
-              </button>
-            )}
-
-            {/* CTA Button */}
-            <Link
-              href="/contact"
-              className="btn-primary ml-4"
-            >
-              Get Started
+          <div className="flex-shrink-0">
+            <Link href="/" className="flex items-center space-x-3 group">
+              <NavbarLogo className="group-hover:scale-105 transition-transform duration-300" />
             </Link>
           </div>
 
-          {/* Mobile menu button */}
-          <div className="md:hidden flex items-center space-x-4">
-            {mounted && (
+          {/* Desktop Navigation */}
+          <div className="hidden md:block">
+            <div className="ml-10 flex items-baseline space-x-4">
+              {navItems.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className="px-3 py-2 rounded-md text-sm font-medium transition-colors text-foreground hover:bg-accent hover:text-molten"
+                >
+                  {item.label}
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          {/* Mobile Menu Button */}
+          <div className="flex items-center space-x-2">
+            {/* Mobile menu button */}
+            <div className="md:hidden">
               <button
-                onClick={toggleTheme}
-                className={cn(
-                  'p-2 rounded-lg bg-secondary hover:bg-muted',
-                  'transition-colors duration-200 focus-visible:outline-molten'
-                )}
-                aria-label="Toggle dark mode"
+                onClick={() => setIsOpen(!isOpen)}
+                className="p-2 rounded-lg transition-colors text-foreground hover:bg-accent hover:text-molten"
+                aria-label="Toggle menu"
               >
-                {isDark ? (
-                  <Sun className="h-5 w-5 text-spark" />
+                {isOpen ? (
+                  <X className="h-6 w-6" />
                 ) : (
-                  <Moon className="h-5 w-5 text-foreground" />
+                  <Menu className="h-6 w-6" />
                 )}
               </button>
-            )}
-            
-            <button
-              type="button"
-              className={cn(
-                'p-2 rounded-lg text-foreground hover:text-molten',
-                'transition-colors duration-200 focus-visible:outline-molten'
-              )}
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              aria-expanded="false"
-              aria-label="Toggle navigation menu"
-            >
-              {mobileMenuOpen ? (
-                <X className="h-6 w-6" aria-hidden="true" />
-              ) : (
-                <Menu className="h-6 w-6" aria-hidden="true" />
-              )}
-            </button>
+            </div>
           </div>
         </div>
 
-        {/* Mobile Navigation Menu */}
-        {mobileMenuOpen && (
+        {/* Mobile Navigation */}
+        {isOpen && (
           <div className="md:hidden">
-            <div className="px-2 pt-2 pb-3 space-y-1 bg-card border-t border-border">
-              {navigation.map((item) => (
+            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-background/95 backdrop-blur-md rounded-lg mt-2 border border-border">
+              {navItems.map((item) => (
                 <Link
-                  key={item.name}
+                  key={item.href}
                   href={item.href}
-                  className={cn(
-                    'block px-3 py-3 text-base font-medium',
-                    'text-foreground hover:text-molten hover:bg-muted',
-                    'transition-colors duration-200 rounded-lg',
-                    'focus-visible:outline-molten min-h-[48px] flex items-center'
-                  )}
-                  onClick={() => setMobileMenuOpen(false)}
+                  className="block px-3 py-2 rounded-md text-base font-medium transition-colors text-foreground hover:bg-accent hover:text-molten"
+                  onClick={() => setIsOpen(false)}
                 >
-                  {item.name}
+                  {item.label}
                 </Link>
               ))}
-              <div className="px-3 pt-4">
-                <Link
-                  href="/contact"
-                  className="btn-primary w-full text-center block"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  Get Started
-                </Link>
-              </div>
             </div>
           </div>
         )}
       </div>
     </nav>
-  )
+  );
 }

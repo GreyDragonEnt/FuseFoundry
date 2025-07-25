@@ -1,5 +1,6 @@
 import { Metadata } from 'next'
-import { TrendingUp, Users, Zap, Filter, Search } from 'lucide-react'
+import Link from 'next/link'
+import { TrendingUp, Users, Zap, ArrowRight } from 'lucide-react'
 import CaseStudyCard from '@/components/CaseStudyCard'
 import TestimonialSlider from '@/components/TestimonialSlider'
 import caseStudiesData from '@/data/case-studies.json'
@@ -32,25 +33,6 @@ const stats = [
   { metric: '95%', label: 'Client Satisfaction', sublabel: 'rating score' },
   { metric: '50+', label: 'Success Stories', sublabel: 'and counting' },
   { metric: '18 Mo.', label: 'Average ROI Timeline', sublabel: 'to see results' }
-]
-
-const industries = [
-  'All Industries',
-  'SaaS Technology',
-  'Clean Energy', 
-  'Financial Services',
-  'E-commerce',
-  'Healthcare',
-  'Manufacturing'
-]
-
-const solutions = [
-  'All Solutions',
-  'AI Strategy',
-  'Creator Engine',
-  'Growth Systems',
-  'Automation',
-  'Brand Building'
 ]
 
 export default function CaseStudiesPage() {
@@ -120,39 +102,18 @@ export default function CaseStudiesPage() {
             <CaseStudyCard 
               caseStudy={featuredCaseStudy}
               variant="featured"
+              showCTA={false}
             />
-          </div>
-        </div>
-      </section>
-
-      {/* Filters (Placeholder for future interactivity) */}
-      <section className="py-12 bg-gray-50 dark:bg-gray-900">
-        <div className="container">
-          <div className="flex flex-col lg:flex-row gap-6 items-center justify-between">
-            <div className="flex items-center space-x-4">
-              <Filter className="h-5 w-5 text-muted-foreground" />
-              <span className="font-medium text-foreground">Filter by:</span>
-              
-              <select className="px-4 py-2 border border-border rounded-lg bg-background text-foreground">
-                {industries.map(industry => (
-                  <option key={industry} value={industry}>{industry}</option>
-                ))}
-              </select>
-              
-              <select className="px-4 py-2 border border-border rounded-lg bg-background text-foreground">
-                {solutions.map(solution => (
-                  <option key={solution} value={solution}>{solution}</option>
-                ))}
-              </select>
-            </div>
             
-            <div className="relative">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-muted-foreground" />
-              <input
-                type="text"
-                placeholder="Search case studies..."
-                className="pl-10 pr-4 py-2 border border-border rounded-lg bg-background text-foreground w-64"
-              />
+            {/* Become Next Case Study CTA */}
+            <div className="text-center mt-8">
+              <Link 
+                href="/services"
+                className="btn-primary text-lg px-8 py-4 inline-flex items-center justify-center"
+              >
+                Become our next Case study
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Link>
             </div>
           </div>
         </div>
@@ -179,6 +140,7 @@ export default function CaseStudiesPage() {
                 key={caseStudy.id}
                 caseStudy={caseStudy}
                 variant="default"
+                showCTA={false}
               />
             ))}
           </div>
@@ -186,7 +148,7 @@ export default function CaseStudiesPage() {
       </section>
 
       {/* Client Testimonials Slider */}
-      <section className="py-20 bg-gray-50 dark:bg-gray-900">
+      <section className="py-20 bg-background/50 dark:bg-background">
         <div className="container">
           <div className="text-center mb-16">
             <h2 className="text-4xl sm:text-5xl font-black text-foreground mb-6">
@@ -231,14 +193,14 @@ export default function CaseStudiesPage() {
               achieved exponential growth with FuseFoundry.
             </p>
             
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="btn-primary text-lg px-8 py-4">
+            <div className="flex justify-center">
+              <Link 
+                href="/services"
+                className="btn-primary text-lg px-8 py-4 inline-flex items-center justify-center"
+              >
                 Start Your Transformation
                 <Zap className="ml-2 h-5 w-5" />
-              </button>
-              <button className="btn-secondary text-lg px-8 py-4">
-                Schedule Strategy Call
-              </button>
+              </Link>
             </div>
             
             <div className="mt-8 text-sm text-muted-foreground">

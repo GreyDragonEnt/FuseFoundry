@@ -25,7 +25,9 @@ Add these secrets:
 - `VPS_USERNAME`: root (or your SSH username)
 - `VPS_SSH_KEY`: The private key from step 1
 - `GOOGLE_AI_API_KEY`: AIzaSyB2C0RGwtFAqgaZJIwPp4Hp7M7kLaLSO8A
-- `NEXT_PUBLIC_SITE_URL`: https://yourdomain.com
+- `NEXT_PUBLIC_SITE_URL`: https://fusefoundry.dev
+
+⚠️ **Note:** Until these secrets are configured, the GitHub Actions workflow will show warnings about "Context access might be invalid." This is normal and the warnings will disappear once you add the secrets.
 
 3. **Enable the Workflow:**
 The workflow file is already created at `.github/workflows/deploy-vps.yml`
@@ -46,7 +48,7 @@ Set up a webhook listener on your VPS.
 ```bash
 # Copy files to VPS
 scp deploy-webhook.sh root@your-vps:/var/www/fusefoundry/
-scp webhook-listener.js root@your-vps:/var/www/fusefoundry/
+scp webhook-listener.mjs root@your-vps:/var/www/fusefoundry/
 
 # Make executable
 chmod +x /var/www/fusefoundry/deploy-webhook.sh
@@ -54,7 +56,8 @@ chmod +x /var/www/fusefoundry/deploy-webhook.sh
 # Install webhook listener as PM2 service
 cd /var/www/fusefoundry
 npm install # Installs dependencies
-pm2 start webhook-listener.js --name "fusefoundry-webhook"
+# Start webhook listener with PM2
+pm2 start webhook-listener.mjs --name "fusefoundry-webhook"
 pm2 save
 ```
 

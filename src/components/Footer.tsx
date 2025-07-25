@@ -44,7 +44,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8">
           {/* Brand section */}
           <div className="lg:col-span-2">
-            <FuseFoundryLogo width={300} height={64} className="mb-6" />
+            <FuseFoundryLogo height={64} className="mb-6" />
             <p className="text-muted-foreground mb-6 leading-relaxed">
               Fusing AI innovation, creator-powered content, and strategic growth systems 
               to transform ambitious businesses into market leaders.

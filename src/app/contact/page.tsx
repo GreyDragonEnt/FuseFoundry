@@ -103,7 +103,7 @@ export default function ContactPage() {
       </section>
 
       {/* Main Contact Section */}
-      <section className="py-20 bg-gray-50 dark:bg-gray-900">
+      <section className="py-20 bg-background/50 dark:bg-background">
         <div className="container">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
             {/* Contact Form */}
@@ -183,7 +183,7 @@ export default function ContactPage() {
                 <p className="text-sm mb-4 opacity-90">
                   For critical issues, call our emergency line.
                 </p>
-                <button className="btn-secondary bg-white text-molten hover:bg-gray-100">
+                <button className="btn-secondary bg-background dark:bg-gray-800 text-molten hover:bg-muted dark:hover:bg-gray-700">
                   Call Emergency Line
                 </button>
               </div>

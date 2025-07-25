@@ -1,5 +1,8 @@
+'use client'
+
 import { Bot, Users, TrendingUp, ArrowRight, CheckCircle } from 'lucide-react'
 import Link from 'next/link'
+import ServicePackages from '@/components/ServicePackages'
 
 const services = [
   {
@@ -95,6 +98,35 @@ export default function ServicesPage() {
         </div>
       </section>
 
+      {/* Service Packages Section */}
+      <ServicePackages />
+
+      {/* Custom Solutions Section */}
+      <section className="py-16 bg-background/50 dark:bg-background">
+        <div className="container">
+          <div className="text-center">
+            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
+              Accelerate your business growth with our
+              <span className="block bg-gradient-to-r from-molten via-spark to-catalyst bg-clip-text text-transparent">
+                custom done for you solution.
+              </span>
+            </h2>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
+              We offer custom application of the following three pillars to your business.
+            </p>
+            <div className="flex justify-center">
+              <Link 
+                href="/contact"
+                className="btn-primary text-lg px-8 py-4 inline-flex items-center justify-center"
+              >
+                Book Your Custom Consultation
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Services Grid */}
       <section className="py-20">
         <div className="container">
@@ -147,7 +179,7 @@ export default function ServicesPage() {
                       </h3>
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         {service.benefits.map((benefit, idx) => (
-                          <div key={idx} className="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                          <div key={idx} className="bg-muted/30 dark:bg-muted/20 p-4 rounded-lg border border-border">
                             <span className="text-sm font-medium text-muted-foreground">
                               {benefit}
                             </span>
@@ -155,15 +187,6 @@ export default function ServicesPage() {
                         ))}
                       </div>
                     </div>
-
-                    {/* CTA */}
-                    <Link
-                      href={service.href}
-                      className="btn-primary inline-flex items-center group"
-                    >
-                      {service.cta}
-                      <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-                    </Link>
                   </div>
 
                   {/* Visual */}
@@ -195,7 +218,7 @@ export default function ServicesPage() {
           <h2 className="text-3xl md:text-5xl font-bold mb-6">
             Ready to Transform Your Business?
           </h2>
-          <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+          <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
             Let&apos;s discuss how our three pillars can work together to accelerate your growth 
             and transform your operations.
           </p>

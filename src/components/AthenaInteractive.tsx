@@ -38,11 +38,17 @@ export default function AthenaInteractive({
   const [teaserCount, setTeaserCount] = useState(0)
   const [showLeadCapture, setShowLeadCapture] = useState(false)
   const [hasInteracted, setHasInteracted] = useState(false)
+  const [isMounted, setIsMounted] = useState(false)
   const messagesEndRef = useRef<HTMLDivElement>(null)
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })
   }
+
+  useEffect(() => {
+    // Mark component as mounted to avoid hydration issues with timestamps
+    setIsMounted(true)
+  }, [])
 
   useEffect(() => {
     // Only auto-scroll if user has interacted (sent a message)
@@ -204,7 +210,7 @@ export default function AthenaInteractive({
                     </div>
                   )}
                   <p className={`text-xs mt-1 opacity-70`}>
-                    {message.timestamp.toLocaleTimeString([], { 
+                    {isMounted && message.timestamp.toLocaleTimeString([], { 
                       hour: '2-digit', 
                       minute: '2-digit' 
                     })}

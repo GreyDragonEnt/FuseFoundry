@@ -1,9 +1,9 @@
 // FuseFoundry Service Worker
 // Handles caching, offline functionality, and PWA features
 
-const CACHE_NAME = 'fusefoundry-v1.0.0'
-const STATIC_CACHE_NAME = 'fusefoundry-static-v1.0.0'
-const DYNAMIC_CACHE_NAME = 'fusefoundry-dynamic-v1.0.0'
+const CACHE_NAME = 'fusefoundry-v3.1.0-design-optimized'
+const STATIC_CACHE_NAME = 'fusefoundry-static-v3.1.0-design-optimized'
+const DYNAMIC_CACHE_NAME = 'fusefoundry-dynamic-v3.1.0-design-optimized'
 
 // Assets to cache immediately
 const STATIC_ASSETS = [
@@ -116,6 +116,12 @@ self.addEventListener('fetch', (event) => {
       request.destination === 'script' || 
       request.destination === 'style' ||
       request.url.includes('/_next/static/')) {
+    
+    // Skip caching webpack chunks during development to avoid version conflicts
+    if (request.url.includes('webpack.js') || request.url.includes('hot-reload')) {
+      event.respondWith(fetch(request))
+      return
+    }
     
     event.respondWith(
       caches.match(request)

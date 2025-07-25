@@ -75,28 +75,25 @@ export default function AIAthenaPage() {
                 predicts market trends, and provides actionable insights to accelerate your growth.
               </p>
 
-              <div className="flex flex-col sm:flex-row gap-4 mb-8">
-                <Link href="/contact" className="btn-primary inline-flex items-center group">
-                  Start Free Trial
+              <div className="flex justify-start mb-8">
+                <a href="#try-athena" className="btn-primary inline-flex items-center group">
+                  Try Athena Now
                   <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-                </Link>
-                <button className="btn-secondary">
-                  Schedule Demo
-                </button>
+                </a>
               </div>
 
               {/* Quick stats */}
               <div className="grid grid-cols-3 gap-4 text-center">
                 <div>
-                  <div className="text-2xl font-bold text-gradient">99.7%</div>
+                  <div className="text-2xl font-bold bg-gradient-to-r from-molten via-spark to-catalyst bg-clip-text text-transparent">99.7%</div>
                   <div className="text-sm text-muted-foreground">Accuracy</div>
                 </div>
                 <div>
-                  <div className="text-2xl font-bold text-gradient">10x</div>
+                  <div className="text-2xl font-bold bg-gradient-to-r from-molten via-spark to-catalyst bg-clip-text text-transparent">10x</div>
                   <div className="text-sm text-muted-foreground">Faster Insights</div>
                 </div>
                 <div>
-                  <div className="text-2xl font-bold text-gradient">24/7</div>
+                  <div className="text-2xl font-bold bg-gradient-to-r from-molten via-spark to-catalyst bg-clip-text text-transparent">24/7</div>
                   <div className="text-sm text-muted-foreground">Available</div>
                 </div>
               </div>
@@ -127,7 +124,7 @@ export default function AIAthenaPage() {
       </section>
 
       {/* Features Section */}
-      <section className="py-20">
+      <section className="py-20 bg-background/50 dark:bg-background">
         <div className="container">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-6">
@@ -165,7 +162,7 @@ export default function AIAthenaPage() {
       </section>
 
       {/* Capabilities List */}
-      <section className="py-20">
+      <section id="try-athena" className="py-20">
         <div className="container">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
@@ -199,12 +196,12 @@ export default function AIAthenaPage() {
                     <Star key={i} className="h-5 w-5 text-spark fill-current" />
                   ))}
                 </div>
-                <blockquote className="text-gray-300 mb-4 italic">
+                <blockquote className="text-muted-foreground mb-4 italic">
                   &quot;{testimonial.quote}&quot;
                 </blockquote>
                 <div>
-                  <div className="font-semibold text-white">{testimonial.author}</div>
-                  <div className="text-gray-400 text-sm">{testimonial.role}</div>
+                  <div className="font-semibold text-foreground">{testimonial.author}</div>
+                  <div className="text-muted-foreground text-sm">{testimonial.role}</div>
                 </div>
               </div>
             ))}
@@ -213,7 +210,7 @@ export default function AIAthenaPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20">
+      <section className="py-20 bg-background/50 dark:bg-background">
         <div className="container text-center">
           <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-6">
             Ready to Meet Your AI Business Strategist?

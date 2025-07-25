@@ -2,6 +2,7 @@
 
 import { Search, Zap, Hammer, Rocket, ArrowRight, CheckCircle } from 'lucide-react'
 import { cn } from '@/lib/utils'
+import { getTextClasses } from '@/lib/theme-utils'
 
 const steps = [
   {
@@ -87,7 +88,7 @@ export default function ProcessTimeline({ className }: ProcessTimelineProps) {
             <div key={step.number} className="relative">
               {/* Timeline line */}
               {!isLast && (
-                <div className="absolute left-6 top-16 w-0.5 h-16 bg-gray-200 dark:bg-gray-700" />
+                <div className="absolute left-6 top-16 w-0.5 h-16 bg-border" />
               )}
               
               {/* Step content */}
@@ -95,15 +96,15 @@ export default function ProcessTimeline({ className }: ProcessTimelineProps) {
                 {/* Icon */}
                 <div className={cn(
                   'flex-shrink-0 w-12 h-12 rounded-full flex items-center justify-center',
-                  step.color === 'molten' && 'bg-molten',
-                  step.color === 'spark' && 'bg-spark',
-                  step.color === 'catalyst' && 'bg-catalyst'
+                  step.color === 'molten' && 'bg-molten text-white',
+                  step.color === 'spark' && 'bg-spark text-white',
+                  step.color === 'catalyst' && 'bg-catalyst text-white'
                 )}>
-                  <Icon className="h-6 w-6 text-white" />
+                  <Icon className="h-6 w-6" />
                 </div>
                 
                 {/* Content */}
-                <div className="flex-1 card p-6">
+                <div className="card flex-1 p-8 hover:shadow-xl transition-all duration-300">
                   <div className="flex items-center mb-2">
                     <span className={cn(
                       'text-sm font-bold mr-3',
@@ -113,7 +114,7 @@ export default function ProcessTimeline({ className }: ProcessTimelineProps) {
                     )}>
                       {step.number}
                     </span>
-                    <h3 className="text-xl font-bold text-forge dark:text-white">
+                    <h3 className={cn(getTextClasses('heading'), "text-xl font-bold")}>
                       {step.title}
                     </h3>
                   </div>
@@ -127,27 +128,27 @@ export default function ProcessTimeline({ className }: ProcessTimelineProps) {
                     {step.subtitle}
                   </p>
                   
-                  <p className="text-gray-600 dark:text-gray-300 mb-4 text-sm">
+                  <p className={cn(getTextClasses('secondary'), "mb-4 text-sm")}>
                     {step.description}
                   </p>
                   
-                  <div className="text-xs text-gray-500 dark:text-gray-400 mb-3">
+                  <div className={cn(getTextClasses('muted'), "text-xs mb-3")}>
                     Duration: {step.duration}
                   </div>
                   
                   <div className="space-y-2">
-                    <h4 className="text-sm font-semibold text-forge dark:text-white">
+                    <h4 className={cn(getTextClasses('heading'), "text-sm font-semibold")}>
                       Key Deliverables:
                     </h4>
                     <ul className="space-y-1">
                       {step.deliverables.slice(0, 3).map((deliverable, idx) => (
-                        <li key={idx} className="flex items-center text-xs text-gray-600 dark:text-gray-300">
+                        <li key={idx} className={cn("flex items-center text-xs", getTextClasses('secondary'))}>
                           <CheckCircle className="h-3 w-3 mr-2 text-catalyst flex-shrink-0" />
                           {deliverable}
                         </li>
                       ))}
                       {step.deliverables.length > 3 && (
-                        <li className="text-xs text-gray-500 dark:text-gray-400">
+                        <li className={cn("text-xs", getTextClasses('muted'))}>
                           +{step.deliverables.length - 3} more...
                         </li>
                       )}
@@ -164,7 +165,7 @@ export default function ProcessTimeline({ className }: ProcessTimelineProps) {
       <div className="hidden md:block">
         {/* Timeline line */}
         <div className="relative mb-16">
-          <div className="absolute top-6 left-0 right-0 h-0.5 bg-gray-200 dark:bg-gray-700" />
+          <div className="absolute top-6 left-0 right-0 h-0.5 bg-border" />
           
           {/* Steps */}
           <div className="grid grid-cols-4 gap-8">
@@ -177,22 +178,22 @@ export default function ProcessTimeline({ className }: ProcessTimelineProps) {
                   {/* Arrow between steps */}
                   {!isLast && (
                     <div className="absolute top-6 -right-4 z-10">
-                      <ArrowRight className="h-4 w-4 text-gray-400 dark:text-gray-500" />
+                      <ArrowRight className="h-4 w-4 text-muted-foreground" />
                     </div>
                   )}
                   
                   {/* Icon */}
                   <div className={cn(
                     'relative z-20 w-12 h-12 mx-auto rounded-full flex items-center justify-center mb-6',
-                    step.color === 'molten' && 'bg-molten',
-                    step.color === 'spark' && 'bg-spark',
-                    step.color === 'catalyst' && 'bg-catalyst'
+                    step.color === 'molten' && 'bg-molten text-white',
+                    step.color === 'spark' && 'bg-spark text-white',
+                    step.color === 'catalyst' && 'bg-catalyst text-white'
                   )}>
-                    <Icon className="h-6 w-6 text-white" />
+                    <Icon className="h-6 w-6" />
                   </div>
                   
                   {/* Content */}
-                  <div className="card p-6 hover:shadow-xl transition-shadow">
+                  <div className="card p-8 hover:shadow-xl transition-all duration-300">
                     <div className="text-center mb-4">
                       <span className={cn(
                         'text-sm font-bold',
@@ -202,7 +203,7 @@ export default function ProcessTimeline({ className }: ProcessTimelineProps) {
                       )}>
                         {step.number}
                       </span>
-                      <h3 className="text-xl font-bold text-forge dark:text-white mt-1">
+                      <h3 className={cn(getTextClasses('heading'), "text-xl font-bold mt-2")}>
                         {step.title}
                       </h3>
                       <p className={cn(
@@ -215,30 +216,25 @@ export default function ProcessTimeline({ className }: ProcessTimelineProps) {
                       </p>
                     </div>
                     
-                    <p className="text-gray-600 dark:text-gray-300 mb-4 text-sm text-center">
+                    <p className={cn(getTextClasses('secondary'), "text-sm mb-4 leading-relaxed")}>
                       {step.description}
                     </p>
                     
-                    <div className="text-xs text-gray-500 dark:text-gray-400 mb-4 text-center">
+                    <div className={cn(getTextClasses('muted'), "text-xs text-center mb-4")}>
                       Duration: {step.duration}
                     </div>
                     
-                    <div className="space-y-2">
-                      <h4 className="text-sm font-semibold text-forge dark:text-white">
-                        Deliverables:
+                    <div className="space-y-3">
+                      <h4 className={cn(getTextClasses('heading'), "text-sm font-semibold text-center")}>
+                        Key Deliverables
                       </h4>
-                      <ul className="space-y-1">
-                        {step.deliverables.slice(0, 3).map((deliverable, idx) => (
-                          <li key={idx} className="flex items-start text-xs text-gray-600 dark:text-gray-300">
-                            <CheckCircle className="h-3 w-3 mr-2 mt-0.5 text-catalyst flex-shrink-0" />
-                            <span>{deliverable}</span>
+                      <ul className="space-y-2">
+                        {step.deliverables.map((deliverable, idx) => (
+                          <li key={idx} className={cn("flex items-start text-xs", getTextClasses('secondary'))}>
+                            <CheckCircle className="h-3 w-3 mr-2 text-catalyst flex-shrink-0 mt-0.5" />
+                            <span className="leading-relaxed">{deliverable}</span>
                           </li>
                         ))}
-                        {step.deliverables.length > 3 && (
-                          <li className="text-xs text-gray-500 dark:text-gray-400 text-center">
-                            +{step.deliverables.length - 3} more...
-                          </li>
-                        )}
                       </ul>
                     </div>
                   </div>

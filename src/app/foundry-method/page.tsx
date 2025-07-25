@@ -1,4 +1,5 @@
 import { Metadata } from 'next'
+import Link from 'next/link'
 import { Zap, Target, Users, TrendingUp, ArrowRight, CheckCircle, Star } from 'lucide-react'
 import ProcessTimeline from '@/components/ProcessTimeline'
 
@@ -83,13 +84,10 @@ export default function FoundryMethodPage() {
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="btn-primary text-lg px-8 py-4">
+              <Link href="/services" className="btn-primary text-lg px-8 py-4 inline-flex items-center justify-center">
                 Start Your Transformation
                 <ArrowRight className="ml-2 h-5 w-5" />
-              </button>
-              <button className="btn-secondary text-lg px-8 py-4">
-                Download Framework Guide
-              </button>
+              </Link>
             </div>
           </div>
         </div>
@@ -116,22 +114,26 @@ export default function FoundryMethodPage() {
               const Icon = principle.icon
               return (
                 <div key={index} className="card p-8 hover:shadow-xl transition-all group">
-                  <div className={`
-                    w-16 h-16 rounded-full flex items-center justify-center mb-6
-                    ${principle.color === 'molten' ? 'bg-molten' : ''}
-                    ${principle.color === 'spark' ? 'bg-spark' : ''}
-                    ${principle.color === 'catalyst' ? 'bg-catalyst' : ''}
-                  `}>
-                    <Icon className="h-8 w-8 text-white" />
+                  <div className="flex items-start space-x-6">
+                    <div className={`
+                      w-16 h-16 rounded-full flex items-center justify-center flex-shrink-0
+                      ${principle.color === 'molten' ? 'bg-molten' : ''}
+                      ${principle.color === 'spark' ? 'bg-spark' : ''}
+                      ${principle.color === 'catalyst' ? 'bg-catalyst' : ''}
+                    `}>
+                      <Icon className="h-8 w-8 text-white" />
+                    </div>
+                    
+                    <div className="flex-1">
+                      <h3 className="text-2xl font-bold text-foreground mb-4">
+                        {principle.title}
+                      </h3>
+                      
+                      <p className="text-muted-foreground text-lg">
+                        {principle.description}
+                      </p>
+                    </div>
                   </div>
-                  
-                  <h3 className="text-2xl font-bold text-foreground mb-4">
-                    {principle.title}
-                  </h3>
-                  
-                  <p className="text-muted-foreground text-lg">
-                    {principle.description}
-                  </p>
                 </div>
               )
             })}
@@ -140,7 +142,7 @@ export default function FoundryMethodPage() {
       </section>
 
       {/* Process Timeline */}
-      <section className="py-20 bg-gray-50 dark:bg-gray-900">
+      <section className="py-20 bg-background/50 dark:bg-background">
         <div className="container">
           <div className="text-center mb-16">
             <h2 className="text-4xl sm:text-5xl font-black text-foreground mb-6">
@@ -193,7 +195,7 @@ export default function FoundryMethodPage() {
       </section>
 
       {/* Testimonials */}
-      <section className="py-20 bg-gray-50 dark:bg-gray-900">
+      <section className="py-20 bg-background/50 dark:bg-background">
         <div className="container">
           <div className="text-center mb-16">
             <h2 className="text-4xl sm:text-5xl font-black text-foreground mb-6">

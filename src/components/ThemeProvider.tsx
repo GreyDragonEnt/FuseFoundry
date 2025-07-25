@@ -2,8 +2,21 @@
 
 import { createContext, useContext, useEffect, useState, ReactNode } from 'react'
 
+// Standardized theme types
+export type Theme = 'light' | 'dark'
+
+// Extend window interface for theme
+declare global {
+  interface Window {
+    __INITIAL_THEME__?: Theme
+  }
+}
+
 interface ThemeContextType {
+  theme: Theme
   isDark: boolean
+  isLight: boolean
+  setTheme: (theme: Theme) => void
   toggleTheme: () => void
   mounted: boolean
 }
@@ -15,60 +28,55 @@ interface ThemeProviderProps {
 }
 
 export function ThemeProvider({ children }: ThemeProviderProps) {
-  const [isDark, setIsDark] = useState(true) // Default to dark mode
+  // Force dark mode permanently - no client-side manipulation needed since it's set server-side
   const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
-    // Check for saved theme preference or default to dark mode
-    const savedTheme = localStorage.getItem('theme')
-
-    if (savedTheme === 'light') {
-      setIsDark(false)
-      document.documentElement.classList.remove('dark')
-    } else {
-      // Default to dark mode (either saved as 'dark' or no preference saved)
-      setIsDark(true)
-      document.documentElement.classList.add('dark')
-    }
-    
+    // Just set mounted flag, no DOM manipulation to avoid hydration issues
     setMounted(true)
+    
+    // Ensure localStorage consistency but don't manipulate DOM classes
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('fusefoundry-theme', 'dark')
+    }
   }, [])
 
-  const toggleTheme = () => {
-    const newTheme = !isDark
-    setIsDark(newTheme)
-    
-    if (newTheme) {
-      document.documentElement.classList.add('dark')
-      localStorage.setItem('theme', 'dark')
-    } else {
-      document.documentElement.classList.remove('dark')
-      localStorage.setItem('theme', 'light')
-    }
+  const setTheme = () => {
+    // No-op function since theme is locked to dark
   }
 
-  // Always provide the context, including mounted state for components that need it
+  const toggleTheme = () => {
+    // No-op function since theme is locked to dark
+  }
+
+  const value = {
+    theme: 'dark' as Theme,
+    isDark: true,
+    isLight: false,
+    setTheme,
+    toggleTheme,
+    mounted
+  }
+
   return (
-    <ThemeContext.Provider value={{ isDark, toggleTheme, mounted }}>
+    <ThemeContext.Provider value={value}>
       {children}
     </ThemeContext.Provider>
   )
 }
 
+// Safe hook for SSR - returns safe defaults during server-side rendering
 export function useTheme() {
   const context = useContext(ThemeContext)
   if (context === undefined) {
-    throw new Error('useTheme must be used within a ThemeProvider')
-  }
-  return context
-}
-
-// Safe hook for components that might render during SSR
-export function useThemeSafe() {
-  const context = useContext(ThemeContext)
-  if (context === undefined) {
-    // Return safe defaults for SSR
-    return { isDark: true, toggleTheme: () => {}, mounted: false }
+    return { 
+      theme: 'dark' as Theme, 
+      isDark: true, 
+      isLight: false,
+      setTheme: () => {}, 
+      toggleTheme: () => {}, 
+      mounted: false 
+    }
   }
   return context
 }
