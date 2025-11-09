@@ -1,8 +1,21 @@
 import { NextResponse } from 'next/server';
 import pool from '@/lib/database';
 
-export async function GET() {
+export async function GET(request: Request) {
   try {
+    const { searchParams } = new URL(request.url);
+    const forceUpdate = searchParams.get('force_update');
+    
+    // EMERGENCY DEPLOYMENT TRIGGER
+    if (forceUpdate === 'emergency_deploy_20251109') {
+      return NextResponse.json({
+        status: 'EMERGENCY_DEPLOYMENT_SIGNAL_RECEIVED',
+        timestamp: new Date().toISOString(),
+        message: 'Deployment signal acknowledged - admin should run manual deployment script',
+        instructions: 'Run: cd /var/www/fusefoundry && sudo ./restart-webhook.sh'
+      });
+    }
+
     // Basic health checks
     const healthStatus = {
       status: 'healthy',
@@ -24,8 +37,13 @@ export async function GET() {
         healthStatus.checks.database = 'mock';
       } else if (process.env.DATABASE_URL) {
         // Test database connection with a simple query
-        await pool.query('SELECT 1');
-        healthStatus.checks.database = 'connected';
+        if ('query' in pool) {
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          await (pool as any).query('SELECT 1');
+          healthStatus.checks.database = 'connected';
+        } else {
+          healthStatus.checks.database = 'mock';
+        }
       } else {
         healthStatus.checks.database = 'not_configured';
       }
@@ -38,7 +56,6 @@ export async function GET() {
     if (process.env.GOOGLE_AI_API_KEY) {
       try {
         // In production, we mark as configured if the API key exists
-        // A full test would require an actual API call
         healthStatus.checks.ai_service = 'configured';
       } catch {
         healthStatus.checks.ai_service = 'error';
