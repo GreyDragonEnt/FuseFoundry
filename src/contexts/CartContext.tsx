@@ -7,6 +7,21 @@ export interface CartItem {
   title: string
   price: string
   description: string
+  requiresForm?: boolean // Whether this item needs a form before checkout
+}
+
+export interface ServiceFormData {
+  website: string
+  email: string
+  phone?: string
+  socialAccounts: Array<{
+    platform: string
+    username: string
+    url: string
+  }>
+  businessConcerns?: string
+  preferredConsultationTime?: string
+  additionalNotes?: string
 }
 
 interface CartState {

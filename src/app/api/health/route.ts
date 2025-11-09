@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+import pool from '@/lib/database';
 
 export async function GET() {
   try {
@@ -6,21 +7,38 @@ export async function GET() {
     const healthStatus = {
       status: 'healthy',
       timestamp: new Date().toISOString(),
-      version: process.env.npm_package_version || '1.0.0',
+      version: process.env.npm_package_version || '0.1.0',
       environment: process.env.NODE_ENV || 'development',
       uptime: process.uptime(),
       memory: process.memoryUsage(),
       checks: {
-        database: 'not_configured', // Will be updated when database is added
+        database: 'checking',
         ai_service: process.env.GOOGLE_AI_API_KEY ? 'available' : 'unavailable',
         static_assets: 'ok'
       }
     };
 
+    // Test database connection
+    try {
+      if (process.env.USE_MOCK_DB === 'true' || process.env.NODE_ENV === 'development') {
+        healthStatus.checks.database = 'mock';
+      } else if (process.env.DATABASE_URL) {
+        // Test database connection with a simple query
+        await pool.query('SELECT 1');
+        healthStatus.checks.database = 'connected';
+      } else {
+        healthStatus.checks.database = 'not_configured';
+      }
+    } catch (dbError) {
+      healthStatus.checks.database = 'error';
+      console.error('Database health check failed:', dbError);
+    }
+
     // Test AI service if available
-    if (process.env.GOOGLE_AI_API_KEY && process.env.NODE_ENV === 'production') {
+    if (process.env.GOOGLE_AI_API_KEY) {
       try {
-        // Quick test of Gemini API (without actually making a request)
+        // In production, we mark as configured if the API key exists
+        // A full test would require an actual API call
         healthStatus.checks.ai_service = 'configured';
       } catch {
         healthStatus.checks.ai_service = 'error';

@@ -88,7 +88,8 @@ export default function ServicePackages() {
         id: pkg.id,
         title: pkg.title,
         price: pkg.price,
-        description: pkg.description
+        description: pkg.description,
+        requiresForm: true // All service packages require forms
       }
     })
   }

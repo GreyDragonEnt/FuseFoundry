@@ -11,6 +11,7 @@ import Cart from "@/components/Cart";
 import { Toaster } from "@/components/ui/toaster";
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
+import SessionWrapper from "@/components/SessionWrapper";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -110,21 +111,23 @@ export default function RootLayout({
         className="antialiased transition-colors duration-200" 
         suppressHydrationWarning
       >
-        <ThemeProvider>
-          <CartProvider>
-            <ServiceWorkerRegistration />
-            <PWAInstallPrompt />
-            <Navbar />
-            <main>
-              {children}
-            </main>
-            <Footer />
-            <Cart />
-            <Toaster />
-            <Analytics />
-            <SpeedInsights />
-          </CartProvider>
-        </ThemeProvider>
+        <SessionWrapper>
+          <ThemeProvider>
+            <CartProvider>
+              <ServiceWorkerRegistration />
+              <PWAInstallPrompt />
+              <Navbar />
+              <main>
+                {children}
+              </main>
+              <Footer />
+              <Cart />
+              <Toaster />
+              <Analytics />
+              <SpeedInsights />
+            </CartProvider>
+          </ThemeProvider>
+        </SessionWrapper>
       </body>
     </html>
   );

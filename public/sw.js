@@ -15,8 +15,8 @@ const STATIC_ASSETS = [
   '/case-studies',
   '/contact',
   '/manifest.json',
-  '/icons/icon-192x192.png',
-  '/icons/icon-512x512.png'
+  '/icons/icon-192x192.svg',
+  '/icons/icon-512x512.svg'
 ]
 
 // Install event - cache static assets
@@ -188,15 +188,15 @@ self.addEventListener('push', (event) => {
     
     const options = {
       body: data.body || 'New update from FuseFoundry',
-      icon: '/icons/icon-192x192.png',
-      badge: '/icons/icon-192x192.png',
+      icon: '/icons/icon-192x192.svg',
+      badge: '/icons/icon-192x192.svg',
       tag: 'fusefoundry-notification',
       renotify: true,
       actions: [
         {
           action: 'view',
           title: 'View',
-          icon: '/icons/icon-192x192.png'
+          icon: '/icons/icon-192x192.svg'
         },
         {
           action: 'dismiss',

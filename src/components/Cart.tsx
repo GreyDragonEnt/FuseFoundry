@@ -3,13 +3,17 @@
 import { useState, useEffect } from 'react'
 import { ShoppingCart, X, Trash2, ExternalLink } from 'lucide-react'
 import { useCart } from '@/contexts/CartContext'
+import { ServiceFormData } from '@/contexts/CartContext'
 import { getTextClasses, getCardClasses } from '@/lib/theme-utils'
 import { cn } from '@/lib/utils'
+import ServiceForm from './ServiceForm'
 
 export default function Cart() {
   const { state, dispatch } = useCart()
   const [isCheckingOut, setIsCheckingOut] = useState(false)
   const [isMounted, setIsMounted] = useState(false)
+  const [showServiceForm, setShowServiceForm] = useState<string | null>(null)
+  const [submittingOrder, setSubmittingOrder] = useState(false)
 
   useEffect(() => {
     setIsMounted(true)
@@ -27,12 +31,50 @@ export default function Cart() {
   }, 0)
 
   const handleCheckout = () => {
-    setIsCheckingOut(true)
-    // Here you would integrate with a payment processor like Stripe
-    // For now, we'll just redirect to contact
-    setTimeout(() => {
-      window.location.href = '/contact'
-    }, 1000)
+    if (state.items.length === 1) {
+      // Single item - show service form
+      const item = state.items[0]
+      setShowServiceForm(item.id)
+    } else {
+      // Multiple items - redirect to contact
+      setIsCheckingOut(true)
+      setTimeout(() => {
+        window.location.href = '/contact'
+      }, 1000)
+    }
+  }
+
+  const handleServiceFormSubmit = async (serviceId: string, formData: ServiceFormData) => {
+    setSubmittingOrder(true)
+    try {
+      const item = state.items.find(i => i.id === serviceId)
+      if (!item) return
+
+      const response = await fetch('/api/service-order', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          service: item,
+          requirements: formData
+        })
+      })
+
+      if (response.ok) {
+        const result = await response.json()
+        // Clear cart and show success
+        dispatch({ type: 'CLEAR_CART' })
+        setShowServiceForm(null)
+        // Redirect to success page or show success message
+        window.location.href = `/order-success?orderId=${result.orderId}`
+      } else {
+        throw new Error('Order submission failed')
+      }
+    } catch (error) {
+      console.error('Order submission error:', error)
+      alert('Failed to submit order. Please try again.')
+    } finally {
+      setSubmittingOrder(false)
+    }
   }
 
   return (
@@ -137,6 +179,11 @@ export default function Cart() {
                   >
                     {isCheckingOut ? (
                       'Processing...'
+                    ) : state.items.length === 1 ? (
+                      <>
+                        Complete Order Details
+                        <ExternalLink className="h-4 w-4 ml-2" />
+                      </>
                     ) : (
                       <>
                         Proceed to Checkout
@@ -153,6 +200,17 @@ export default function Cart() {
             </div>
           </div>
         </div>
+      )}
+
+      {/* Service Form Modal */}
+      {showServiceForm && (
+        <ServiceForm
+          serviceId={showServiceForm}
+          serviceTitle={state.items.find(item => item.id === showServiceForm)?.title || ''}
+          onSubmit={(formData) => handleServiceFormSubmit(showServiceForm, formData)}
+          onCancel={() => setShowServiceForm(null)}
+          isSubmitting={submittingOrder}
+        />
       )}
     </>
   )

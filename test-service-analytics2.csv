@@ -1,0 +1,5 @@
+Service ID,Service Title,Total Orders,Total Revenue,Average Price,Min Price,Max Price,Completed Orders,Pending Orders,Processing Orders,Cancelled Orders,Completion Rate (%),Cancellation Rate (%),Unique Customers,Revenue per Customer,Avg Completion Days
+health-check,Business Health Check,2,59.98,29.99,29.99,29.99,2,0,0,0,100,0,1,59.98,0
+strategy-package,Business Strategy Package,2,99.98,49.99,49.99,49.99,1,0,1,0,50,0,1,99.98,0
+transformation-blueprint,DIY Business Transformation Blueprint,1,99.99,99.99,99.99,99.99,1,0,0,0,100,0,1,99.99,0
+strategy-consultation,Business Strategy Consultation,2,399.98,199.99,199.99,199.99,1,0,0,1,50,50,1,399.98,0
