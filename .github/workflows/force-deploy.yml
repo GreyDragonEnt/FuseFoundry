@@ -1,0 +1,104 @@
+name: Force Production Deployment
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:  # Allow manual triggering
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Deploy to Production Server
+      uses: appleboy/ssh-action@v0.1.5
+      with:
+        host: fusefoundry.dev
+        username: fusefoundry
+        key: ${{ secrets.DEPLOY_SSH_KEY }}
+        port: 22
+        script: |
+          echo "🚀 Force deployment started at $(date)"
+          cd /var/www/fusefoundry
+          
+          # Pull latest changes
+          git fetch origin main
+          git reset --hard origin/main
+          
+          # Install dependencies and build
+          npm ci --production=false
+          npm run build
+          
+          # Update nginx config for admin routes
+          sudo tee /etc/nginx/sites-available/fusefoundry > /dev/null << 'EOF'
+          server {
+              listen 443 ssl http2;
+              server_name fusefoundry.dev www.fusefoundry.dev;
+              ssl_certificate /var/www/fusefoundry/SSL/fusefoundry_dev.crt;
+              ssl_certificate_key /var/www/fusefoundry/SSL/fusefoundry_dev.key;
+              
+              location / {
+                  proxy_pass http://localhost:3000;
+                  proxy_http_version 1.1;
+                  proxy_set_header Upgrade $http_upgrade;
+                  proxy_set_header Connection 'upgrade';
+                  proxy_set_header Host $host;
+                  proxy_set_header X-Real-IP $remote_addr;
+                  proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+                  proxy_set_header X-Forwarded-Proto $scheme;
+                  proxy_cache_bypass $http_upgrade;
+              }
+              
+              location /admin {
+                  proxy_pass http://localhost:3000;
+                  proxy_http_version 1.1;
+                  proxy_set_header Host $host;
+                  proxy_set_header X-Real-IP $remote_addr;
+                  proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+                  proxy_set_header X-Forwarded-Proto $scheme;
+                  add_header Cache-Control "no-cache, no-store, must-revalidate";
+              }
+          }
+          
+          server {
+              listen 80;
+              server_name fusefoundry.dev www.fusefoundry.dev;
+              return 301 https://$server_name$request_uri;
+          }
+          EOF
+          
+          # Reload nginx
+          sudo ln -sf /etc/nginx/sites-available/fusefoundry /etc/nginx/sites-enabled/
+          sudo nginx -t && sudo systemctl reload nginx
+          
+          # Apply production environment
+          if [ ! -f .env.production ]; then
+            echo "Creating production environment..."
+            cat > .env.production << 'ENVEOF'
+          NODE_ENV=production
+          DATABASE_URL=postgresql://fusefoundry:FuseFoundryDB2025!@localhost:5432/fusefoundry_production
+          USE_MOCK_DB=false
+          NEXTAUTH_URL=https://fusefoundry.dev
+          NEXTAUTH_SECRET=8f7e6d5c4b3a29180f6e5d4c3b2a19080f7e6d5c4b3a2918
+          ADMIN_EMAIL=admin@fusefoundry.dev
+          ADMIN_PASSWORD=FuseFoundry2025!
+          WEBHOOK_SECRET=a9b8c7d6e5f4938271f6e5d4c3b2a1908
+          WEBHOOK_PORT=9000
+          ENVEOF
+            chmod 600 .env.production
+          fi
+          
+          # Restart application
+          pm2 restart fusefoundry || pm2 start ecosystem.config.js
+          
+          # Wait and test
+          sleep 15
+          
+          echo "🧪 Testing deployment..."
+          curl -f http://localhost:3000/api/health && echo "✅ Health check passed"
+          curl -f http://localhost:3000/admin/login && echo "✅ Admin routes working" || echo "⚠️ Admin routes need check"
+          
+          # Restart webhook listener
+          pm2 restart webhook-listener || pm2 start webhook-listener.js --name "webhook-listener"
+          
+          echo "🎉 Force deployment completed at $(date)"
